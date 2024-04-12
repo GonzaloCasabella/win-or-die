@@ -1,7 +1,8 @@
 export default class Boton {
 
-    constructor(scene, x, y, texto, callback, escala, textura) {
-        this.texto = scene.add.text(0, 0, texto, { fontSize: 24, fontStyle: 'bold', color: 'white', fontFamily: 'Montserrat' }).setOrigin(0.5);
+    constructor(scene, x, y, texto, callback, escala = 1, tamanio = 24, textura = "fondo-boton") {
+        this.texto = scene.add.text(0, 0, texto, { fontSize: tamanio, fontStyle: 'bold', color: 'white', fontFamily: 'AnyMale', stroke: 'black', strokeThickness: 6 }).setOrigin(0.5);
+
         this.image = scene.add
             .image(0, 0, textura)
             .setOrigin(0.5)
