@@ -2,6 +2,8 @@ import Phaser from "phaser";
 import UI from "./scenes/UI";
 import PantallaCarga from "./scenes/PantallaCarga";
 import PantallaMenuPrincipal from "./scenes/PantallaMenuPrincipal";
+import PantallaMenu from "./scenes/PatantallaMenu";
+import PantallaControles from "./scenes/PantallaControles";
 
 const config = {
   type: Phaser.AUTO,
@@ -26,7 +28,7 @@ const config = {
       debug: false,
     },
   },
-  scene: [PantallaCarga, PantallaMenuPrincipal, UI],
+  scene: [PantallaCarga, PantallaMenuPrincipal, PantallaMenu, PantallaControles, UI],
 };
 
 export default new Phaser.Game(config);

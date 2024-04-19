@@ -13,11 +13,11 @@ export default class PantallaMenuPrincipal extends Phaser.Scene {
         this.add.text((this.scale.width / 2), (this.scale.height / 2) - 160, "Win or Die", { fontSize: '200px', fontStyle: 'bold', color: 'white', fontFamily: 'AnyMale', stroke: 'black', strokeThickness: 6 }).setOrigin(0.5);
         // eslint-disable-next-line no-new
         new Boton(this, this.scale.width / 2, (this.scale.height / 2) + 200, 'ENTER', () => {
-            this.scene.start('PantallaJuego');
+            this.scene.start('PantallaMenu');
         }, 1, 50, 'fondo-boton');
 
         this.input.keyboard.on('keydown-ENTER', () => {
-            this.scene.start('PantallaJuego');
+            this.scene.start('PantallaMenu');
         });
     }
 }
