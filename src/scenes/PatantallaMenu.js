@@ -17,7 +17,7 @@ export default class PantallaMenu extends Phaser.Scene {
 
         // eslint-disable-next-line no-new
         new BotonAmarrillo(this, 140, (this.scale.height / 2), 'Equipo', () => {
-            this.scene.start('PantallaSeleccionEquipo');
+            this.scene.start('Nivel1');
         }, 1, 50, 'fondo-boton');
         // eslint-disable-next-line no-new
         new BotonAmarrillo(this, 140, (this.scale.height / 2) + 100, 'Controles', () => {

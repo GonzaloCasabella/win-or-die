@@ -4,16 +4,17 @@ import PantallaCarga from "./scenes/PantallaCarga";
 import PantallaMenuPrincipal from "./scenes/PantallaMenuPrincipal";
 import PantallaMenu from "./scenes/PatantallaMenu";
 import PantallaControles from "./scenes/PantallaControles";
+import Nivel1 from "./scenes/niveles/Nivel1";
 
 const config = {
   type: Phaser.AUTO,
-  width: 1080,
+  width: 1280,
   height: 720,
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
     min: {
-      width: 1080,
+      width: 1280,
       height: 720,
     },
     max: {
@@ -28,7 +29,7 @@ const config = {
       debug: false,
     },
   },
-  scene: [PantallaCarga, PantallaMenuPrincipal, PantallaMenu, PantallaControles, UI],
+  scene: [PantallaCarga, PantallaMenuPrincipal, PantallaMenu, PantallaControles, Nivel1, UI],
 };
 
 export default new Phaser.Game(config);

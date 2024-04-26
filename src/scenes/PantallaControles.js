@@ -8,7 +8,7 @@ export default class PantallaControles extends Phaser.Scene {
 
 
     create() {
-        this.add.image(0, 0, 'fondo-desierto').setOrigin(0);
+        this.add.image(0, 0, 'fondo-control').setOrigin(0);
 
 
         // eslint-disable-next-line no-new

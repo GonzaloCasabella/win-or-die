@@ -6,11 +6,28 @@ export default class PantallaCarga extends Phaser.Scene {
     }
 
     preload() {
+
+        // Backgrounds
         this.load.image('fondo-carga', 'assets/fondos/fondo-carga.jpeg')
         this.load.image('fondo-menu', 'assets/fondos/fondo-menu.jpeg')
         this.load.image('fondo-desierto', 'assets/fondos/fondodesierto.jpeg')
-        this.load.image('fondo-selva', 'assets/fondos/fondoselva.jpeg')
+        // this.load.image('fondo-selva', 'assets/fondos/fondoselva.jpeg')
         this.load.image('fondo-boton', 'assets/sprites/fondo-boton.png')
+        this.load.image('fondo-control', 'assets/fondos/fondo-control.png');
+
+        // Autos
+        // this.load.image('auto-amarillo', 'assets/sprites/auto-amarillo.png');
+
+        // tilemap
+        this.load.tilemapTiledJSON("nivel1", "assets/tilemap/nivel1.json");
+
+        // Atlas
+        this.load.image('atlas-lava', 'assets/atlas/atlas-lava.png');
+
+
+
+
+
 
         this.barraDeCarga();
     }
