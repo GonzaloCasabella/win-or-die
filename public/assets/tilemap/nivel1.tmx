@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="3">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="11">
  <editorsettings>
-  <export target="nivel1.tmj" format="json"/>
+  <export target="nivel1.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="atlas-lava" tilewidth="32" tileheight="32" tilecount="6" columns="6">
   <image source="../atlas/atlas-lava.png" width="192" height="32"/>
@@ -38,4 +38,12 @@
 5,5,5,5,1,2,3,4,5,5,5,5,1,2,3,4,5,5,5,0,0,5,5,5,1,2,3,4,5,5,5,5,1,2,3,4,5,5,5,5
 </data>
  </layer>
+ <objectgroup id="6" name="objetos">
+  <object id="3" name="jugador1" x="185.333" y="686.667">
+   <point/>
+  </object>
+  <object id="4" name="jugador2" x="1084.85" y="681.818">
+   <point/>
+  </object>
+ </objectgroup>
 </map>
