@@ -10,17 +10,17 @@ import PatallaGameOver from "./scenes/PantallaGameOver";
 const config = {
   type: Phaser.AUTO,
   width: 1280,
-  height: 720,
+  height: 768,
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
     min: {
-      width: 1280,
-      height: 720,
+      width: 260,
+      height: 280,
     },
     max: {
-      width: 1600,
-      height: 1200,
+      width: 1280,
+      height: 768,
     },
   },
   physics: {
