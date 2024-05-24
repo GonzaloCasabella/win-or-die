@@ -41,9 +41,9 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         this.contadorImpactos += 1;
     }
 
-    recolectarMoneda() {
+    recolectarMoneda(cantidadMonedas) {
         if (this.ladoEquipo === "izquierda") {
-            this.scene.monedasEquipoIzquierda += 1;
+            this.scene.monedasEquipoIzquierda += cantidadMonedas;
             events.emit("moneda-recolectada", "izquierda", this.scene.monedasEquipoIzquierda);
         } else if (this.ladoEquipo === "derecha") {
             this.scene.monedasEquipoDerecha += 1;

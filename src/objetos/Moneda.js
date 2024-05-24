@@ -1,6 +1,9 @@
 import Phaser from "phaser";
 
 export default class Moneda extends Phaser.Physics.Arcade.Sprite {
+
+    cantidad;
+
     constructor(scene, x, y, texture) {
         super(scene, x, y, texture);
         scene.add.existing(this);
@@ -8,6 +11,8 @@ export default class Moneda extends Phaser.Physics.Arcade.Sprite {
         this.setImmovable(true);
         this.setCollideWorldBounds(true);
         this.body.setAllowGravity(false);
+
+        this.cantidad = 100;
 
         this.animacion();
     }

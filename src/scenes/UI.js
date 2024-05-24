@@ -136,7 +136,7 @@ export default class UI extends Phaser.Scene {
 
     this.textoIzquierda = this.add.text(-background.width + (background.width * 0.75), background.height / 2 - 10, "0", {
       fontFamily: "AlarmClock",
-      fontSize: "60px",
+      fontSize: "30px",
       color: "#c81000",
       strokeThickness: 2,
       stroke: "#c81000",
@@ -152,7 +152,7 @@ export default class UI extends Phaser.Scene {
 
     this.textoDerecha = this.add.text(background.width - (background.width * 0.75), background.height / 2 - 10, "0", {
       fontFamily: "AlarmClock",
-      fontSize: "60px",
+      fontSize: "30px",
       color: "#7000b6",
       strokeThickness: 2,
       stroke: "#7000b6",
