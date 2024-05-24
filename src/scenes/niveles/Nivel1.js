@@ -26,6 +26,10 @@ export default class Nivel1 extends Phaser.Scene {
 
     vidasEquipoDerecha = 3;
 
+    monedasEquipoIzquierda = 0;
+
+    monedasEquipoDerecha = 0;
+
     constructor() {
         super("Nivel1");
     }
@@ -34,6 +38,8 @@ export default class Nivel1 extends Phaser.Scene {
         this.tiempo = 30;
         this.vidasEquipoIzquierda = 3;
         this.vidasEquipoDerecha = 3;
+        this.monedasEquipoIzquierda = 0;
+        this.monedasEquipoDerecha = 0;
     }
 
 
@@ -106,6 +112,8 @@ export default class Nivel1 extends Phaser.Scene {
         this.physics.add.collider(this.jugadorDerecho, this.lavaGrupo, this.collisionLava, null, this);
         this.physics.add.collider(this.jugadorIzquierdo, this.obstaculos, this.collisionObstaculo, null, this);
         this.physics.add.collider(this.jugadorDerecho, this.obstaculos, this.collisionObstaculo, null, this);
+
+        this.physics.add.overlap(this.jugadorIzquierdo, this.monedas, this.overlapMoneda, null, this);
 
 
         // Configuracion de los controles de los jugadores:
@@ -207,6 +215,15 @@ export default class Nivel1 extends Phaser.Scene {
 
         this.camaraIzquierdo.shake(100, 0.01);
         this.camaraIzquierdo.flash(100, 255, 0, 0);
+    }
+
+
+
+    // eslint-disable-next-line class-methods-use-this
+    overlapMoneda(jugador, moneda) {
+
+        jugador.recolectarMoneda();
+        moneda.destroy();
     }
 
 

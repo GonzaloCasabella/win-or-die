@@ -7,6 +7,9 @@ export default class PantallaCarga extends Phaser.Scene {
 
     preload() {
 
+        this.load.bitmapFont('AlarmClock', 'assets/fuente/AlarmClock.png', 'assets/fuente/AlarmClock.ttf');
+
+
         // Backgrounds
         this.load.image('fondo-carga', 'assets/fondos/fondo-carga.jpeg')
         this.load.image('fondo-menu', 'assets/fondos/fondo-menu.jpeg')
@@ -33,6 +36,7 @@ export default class PantallaCarga extends Phaser.Scene {
         this.load.image('lava', 'assets/sprites/lava.png');
 
         this.load.image('temporizador-ui', 'assets/sprites/temporizador.png');
+        this.load.image('contador-ui', 'assets/sprites/contador.png');
 
 
 
