@@ -1,0 +1,24 @@
+{ "columns":6,
+ "image":"atlas-lava.png",
+ "imageheight":32,
+ "imagewidth":192,
+ "margin":0,
+ "name":"atlas-lava",
+ "spacing":0,
+ "tilecount":6,
+ "tiledversion":"1.10.2",
+ "tileheight":32,
+ "tiles":[
+        {
+         "id":4,
+         "properties":[
+                {
+                 "name":"fuego",
+                 "type":"bool",
+                 "value":true
+                }]
+        }],
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}
