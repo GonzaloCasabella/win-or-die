@@ -133,6 +133,8 @@ export default class UI extends Phaser.Scene {
       color: "#fff",
     }).setOrigin(0.5);
 
+    const btnWAD = this.add.image(-background.width + (background.width * 0.75), -35, "botonWAD").setOrigin(0.5).setScale(0.8);
+    const btnFlechas = this.add.image(background.width - (background.width * 0.75), -35, "botonesFlechas").setOrigin(0.5).setScale(0.8);
 
     this.textoIzquierda = this.add.text(-background.width + (background.width * 0.75), background.height / 2 - 10, "0", {
       fontFamily: "AlarmClock",
@@ -166,7 +168,7 @@ export default class UI extends Phaser.Scene {
       },
     }).setOrigin(0.5);
 
-    contenedor.add([background, textoJugador1, textoJugador2, this.textoIzquierda, this.textoDerecha]);
+    contenedor.add([background, btnWAD, textoJugador1, btnFlechas, textoJugador2, this.textoIzquierda, this.textoDerecha]);
 
 
   }
