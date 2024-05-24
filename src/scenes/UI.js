@@ -122,13 +122,13 @@ export default class UI extends Phaser.Scene {
     // Crea un texto en la parte superior iz y derecha. con Jugador/a 1 y Jugador/a 2
 
     const textoJugador1 = this.add.text(-background.width + (background.width * 0.75), 0 + 14, "Jugador/a 1", {
-      fontFamily: "AlarmClock",
+      fontFamily: "AnyMale",
       fontSize: "16px",
       color: "#fff",
     }).setOrigin(0.5);
 
     const textoJugador2 = this.add.text(background.width - (background.width * 0.75), 0 + 14, "Jugador/a 2", {
-      fontFamily: "AlarmClock",
+      fontFamily: "AnyMale",
       fontSize: "16px",
       color: "#fff",
     }).setOrigin(0.5);

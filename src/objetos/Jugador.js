@@ -57,17 +57,27 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         }
         if (controles.left.isDown) {
             this.setVelocityX(-150);
+            this.setAngle(-10);
         } else if (controles.right.isDown) {
             this.setVelocityX(150);
+            this.setAngle(10);
         } else {
+            this.setAngle(0);
             this.setVelocityX(0);
         }
 
         if (controles.up.isDown) {
             this.setVelocityY(this.velocidadTurboY);
+            if (controles.left.isDown) {
+                this.setAngle(-10); // Gira el sprite 45 grados hacia la izquierda
+            } else if (controles.right.isDown) {
+                this.setAngle(10); // Gira el sprite 45 grados hacia la derecha
+            } else {
+                this.setAngle(0); // Mantiene el sprite recto
+            }
         } else {
-            // this.setVelocityY(this.velocidadInicialY);
-            this.setVelocityY(0);
+            this.setVelocityY(this.velocidadInicialY);
+            // this.setVelocityY(0);
         }
     }
 

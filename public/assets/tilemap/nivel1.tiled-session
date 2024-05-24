@@ -27,11 +27,11 @@
             "scaleInDock": 1
         },
         "nivel1.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 0,
+            "scale": 0.33,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 1198,
-                "y": 616
+                "x": 475.75757575757575,
+                "y": 2933.333333333333
             }
         },
         "nivel1.tmx#atlas-lava": {
