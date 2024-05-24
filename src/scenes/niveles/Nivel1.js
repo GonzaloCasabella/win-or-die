@@ -172,7 +172,7 @@ export default class Nivel1 extends Phaser.Scene {
                 // jugador.recibirImpacto();
                 // jugador.x = spawnJugador.x;
                 // jugador.y = spawnJugador.y;
-
+                this.scene.stop("ui");
                 this.scene.start("PatallaGameOver");
             }
         });
@@ -180,6 +180,7 @@ export default class Nivel1 extends Phaser.Scene {
 
     collisionObstaculo(jugador, obstaculo) {
 
+        if (obstaculo.exploto) return;
         const jugadorLocal = jugador;
         jugadorLocal.puedeMoverse = false;
 
@@ -216,8 +217,6 @@ export default class Nivel1 extends Phaser.Scene {
         this.camaraIzquierdo.shake(100, 0.01);
         this.camaraIzquierdo.flash(100, 255, 0, 0);
     }
-
-
 
     // eslint-disable-next-line class-methods-use-this
     overlapMoneda(jugador, moneda) {
