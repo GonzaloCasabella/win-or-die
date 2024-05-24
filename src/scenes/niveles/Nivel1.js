@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import Jugador from "../../objetos/Jugador";
 import Lava from "../../objetos/Lava";
 import BolaFuego from "../../objetos/BolaFuego";
+import Moneda from "../../objetos/Moneda";
 
 export default class Nivel1 extends Phaser.Scene {
 
@@ -54,6 +55,7 @@ export default class Nivel1 extends Phaser.Scene {
 
         const todasLavas = objectsLayer.objects.filter(obj => obj.type === "lava");
         const todosObsculos = objectsLayer.objects.filter(obj => obj.type === "obstaculo");
+        const todosMonedas = objectsLayer.objects.filter(obj => obj.type === "moneda");
 
 
         this.jugadorIzquierdo = new Jugador(this, spawnJugador1.x, spawnJugador1.y, "autocarrera-rojo", "izquierda");
@@ -71,6 +73,11 @@ export default class Nivel1 extends Phaser.Scene {
             allowGravity: false
         });
 
+        this.monedas = this.physics.add.group({
+            immovable: true,
+            allowGravity: false
+        });
+
         for (let i = 0; i < todasLavas.length; i += 1) {
             const lava = todasLavas[i];
             const lavaPhysics = new Lava(this, lava.x, lava.y);
@@ -82,6 +89,13 @@ export default class Nivel1 extends Phaser.Scene {
             const obstaculo = todosObsculos[i];
             const obstaculoPhysics = new BolaFuego(this, obstaculo.x, obstaculo.y);
             this.obstaculos.add(obstaculoPhysics);
+        }
+
+        // Crear las monedas en el mapa usando la clase Moneda
+        for (let i = 0; i < todosMonedas.length; i += 1) {
+            const moneda = todosMonedas[i];
+            const monedaPhysics = new Moneda(this, moneda.x, moneda.y, "moneda");
+            this.monedas.add(monedaPhysics);
         }
 
         // Configuracion de las colisiones:
@@ -127,6 +141,7 @@ export default class Nivel1 extends Phaser.Scene {
     update() {
         if (this.vidasEquipoIzquierda <= 0 || this.vidasEquipoDerecha <= 0) {
             // TODO: cambiar a gameover.
+            this.scene.stop("ui");
             this.scene.start("PantallaMenuPrincipal");
         }
         this.jugadorDerecho.mover(this.controlesDerechos);
