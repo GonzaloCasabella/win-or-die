@@ -8,6 +8,12 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
 
     puedeMoverse;
 
+    camara;
+
+    velocidadInicialY;
+
+    velocidadTurboY;
+
     constructor(scene, x, y, texture, frame, ladoEquipo) {
         super(scene, x, y, texture, frame);
         this.scene = scene;
@@ -16,9 +22,13 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         this.setCollideWorldBounds(true);
 
         this.body.setAllowGravity(false);
+        this.setScale(1.55);
 
         this.ladoEquipo = ladoEquipo;
         this.puedeMoverse = true;
+
+        this.velocidadInicialY = -150;
+        this.velocidadTurboY = -350;
     }
 
     recibirImpacto() {
@@ -46,9 +56,9 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         }
 
         if (controles.up.isDown) {
-            this.setVelocityY(-150);
+            this.setVelocityY(this.velocidadTurboY);
         } else {
-            this.setVelocityY(0);
+            this.setVelocityY(this.velocidadInicialY);
         }
     }
 
