@@ -3,8 +3,11 @@ import Jugador from "../../objetos/Jugador";
 import Lava from "../../objetos/Lava";
 import BolaFuego from "../../objetos/BolaFuego";
 import Moneda from "../../objetos/Moneda";
+import Meta from "../../objetos/Meta";
 
 export default class Nivel1 extends Phaser.Scene {
+
+    ganador;
 
     jugadorIzquierdo;
 
@@ -40,6 +43,8 @@ export default class Nivel1 extends Phaser.Scene {
         this.vidasEquipoDerecha = 3;
         this.monedasEquipoIzquierda = 0;
         this.monedasEquipoDerecha = 0;
+
+        this.ganador = null;
     }
 
 
@@ -62,6 +67,7 @@ export default class Nivel1 extends Phaser.Scene {
         const todasLavas = objectsLayer.objects.filter(obj => obj.type === "lava");
         const todosObsculos = objectsLayer.objects.filter(obj => obj.type === "obstaculo");
         const todosMonedas = objectsLayer.objects.filter(obj => obj.type === "moneda");
+        const todosMetas = objectsLayer.objects.filter(obj => obj.type === "meta");
 
 
         this.jugadorIzquierdo = new Jugador(this, spawnJugador1.x, spawnJugador1.y, "autocarrera-rojo", "izquierda");
@@ -80,6 +86,10 @@ export default class Nivel1 extends Phaser.Scene {
         });
 
         this.monedas = this.physics.add.group({
+            immovable: true,
+            allowGravity: false
+        });
+        this.metas = this.physics.add.group({
             immovable: true,
             allowGravity: false
         });
@@ -104,6 +114,12 @@ export default class Nivel1 extends Phaser.Scene {
             this.monedas.add(monedaPhysics);
         }
 
+        // Crear las metas en el mapa
+        for (let i = 0; i < todosMetas.length; i += 1) {
+            const meta = todosMetas[i];
+            const metaPhysics = new Meta(this, meta.x, meta.y - 32);
+            this.metas.add(metaPhysics);
+        }
         // Configuracion de las colisiones:
 
         this.physics.add.collider(this.jugadorIzquierdo, centro);
@@ -114,6 +130,11 @@ export default class Nivel1 extends Phaser.Scene {
         this.physics.add.collider(this.jugadorDerecho, this.obstaculos, this.collisionObstaculo, null, this);
 
         this.physics.add.overlap(this.jugadorIzquierdo, this.monedas, this.recolectarMoneda, null, this);
+        this.physics.add.overlap(this.jugadorDerecho, this.monedas, this.recolectarMoneda, null, this);
+
+        this.physics.add.overlap(this.jugadorIzquierdo, this.metas, this.establecerGanador, null, this);
+        this.physics.add.overlap(this.jugadorDerecho, this.metas, this.establecerGanador, null, this);
+
 
 
         // Configuracion de los controles de los jugadores:
@@ -169,9 +190,6 @@ export default class Nivel1 extends Phaser.Scene {
             duration: 1000,
             ease: 'Linear',
             onComplete: () => {
-                // jugador.recibirImpacto();
-                // jugador.x = spawnJugador.x;
-                // jugador.y = spawnJugador.y;
                 this.scene.stop("ui");
                 this.scene.start("PatallaGameOver");
             }
@@ -223,6 +241,18 @@ export default class Nivel1 extends Phaser.Scene {
 
         jugador.recolectarMoneda(moneda.cantidad);
         moneda.destroy();
+    }
+
+    establecerGanador(jugador) {
+        if (this.ganador) return;
+        this.ganador = jugador;
+        this.ganador.numeroRondasGanadas += 1;
+
+        const jugadores = [this.jugadorIzquierdo, this.jugadorDerecho];
+        const jugadorPerdedor = jugadores.find(j => j !== jugador);
+
+        this.scene.stop("ui");
+        this.scene.start("PantallaFinRonda", { ganador: this.ganador, perdedor: jugadorPerdedor });
     }
 
 

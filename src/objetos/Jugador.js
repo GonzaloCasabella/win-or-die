@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import events from '../scenes/EventCenter';
 
 export default class Jugador extends Phaser.Physics.Arcade.Sprite {
+    textura;
 
     contadorImpactos;
 
@@ -14,6 +15,10 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
     velocidadInicialY;
 
     velocidadTurboY;
+
+    monedas;
+
+    numeroRondasGanadas;
 
     constructor(scene, x, y, texture, ladoEquipo) {
         super(scene, x, y, texture);
@@ -29,6 +34,10 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
 
         this.velocidadInicialY = -150;
         this.velocidadTurboY = -350;
+
+        this.monedas = 0;
+        this.numeroRondasGanadas = 0;
+        this.textura = texture;
     }
 
     recibirImpacto() {
@@ -43,8 +52,8 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
 
     recolectarMoneda(cantidadMonedas) {
         if (this.ladoEquipo === "izquierda") {
-            this.scene.monedasEquipoIzquierda += cantidadMonedas;
-            events.emit("moneda-recolectada", "izquierda", this.scene.monedasEquipoIzquierda);
+            this.monedas += cantidadMonedas;
+            events.emit("moneda-recolectada", "izquierda", this.monedas);
         } else if (this.ladoEquipo === "derecha") {
             this.scene.monedasEquipoDerecha += 1;
         }
