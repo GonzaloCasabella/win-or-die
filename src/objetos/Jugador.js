@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import events from '../scenes/EventCenter';
 
 export default class Jugador extends Phaser.Physics.Arcade.Sprite {
 
@@ -14,8 +15,8 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
 
     velocidadTurboY;
 
-    constructor(scene, x, y, texture, frame, ladoEquipo) {
-        super(scene, x, y, texture, frame);
+    constructor(scene, x, y, texture, ladoEquipo) {
+        super(scene, x, y, texture);
         this.scene = scene;
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
@@ -23,7 +24,6 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
 
         this.body.setAllowGravity(false);
         this.setScale(1.55);
-
         this.ladoEquipo = ladoEquipo;
         this.puedeMoverse = true;
 
@@ -41,6 +41,15 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         this.contadorImpactos += 1;
     }
 
+    recolectarMoneda(cantidadMonedas) {
+        if (this.ladoEquipo === "izquierda") {
+            this.scene.monedasEquipoIzquierda += cantidadMonedas;
+            events.emit("moneda-recolectada", "izquierda", this.scene.monedasEquipoIzquierda);
+        } else if (this.ladoEquipo === "derecha") {
+            this.scene.monedasEquipoDerecha += 1;
+        }
+    }
+
     mover(controles) {
         if (!this.puedeMoverse) {
             this.setVelocity(0);
@@ -48,17 +57,27 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         }
         if (controles.left.isDown) {
             this.setVelocityX(-150);
+            this.setAngle(-10);
         } else if (controles.right.isDown) {
             this.setVelocityX(150);
+            this.setAngle(10);
         } else {
+            this.setAngle(0);
             this.setVelocityX(0);
-
         }
 
         if (controles.up.isDown) {
             this.setVelocityY(this.velocidadTurboY);
+            if (controles.left.isDown) {
+                this.setAngle(-10); // Gira el sprite 45 grados hacia la izquierda
+            } else if (controles.right.isDown) {
+                this.setAngle(10); // Gira el sprite 45 grados hacia la derecha
+            } else {
+                this.setAngle(0); // Mantiene el sprite recto
+            }
         } else {
             this.setVelocityY(this.velocidadInicialY);
+            // this.setVelocityY(0);
         }
     }
 

@@ -29,9 +29,13 @@ export default class PantallaCarga extends Phaser.Scene {
         // Atlas
         this.load.image('atlas-lava', 'assets/atlas/atlas-lava.png');
 
+        this.load.image("moneda", "assets/sprites/moneda.png");
         this.load.image('lava', 'assets/sprites/lava.png');
 
+        this.load.image('botonWAD', 'assets/sprites/botonWAD.png');
+        this.load.image('botonesFlechas', 'assets/sprites/botonesflechas.png');
         this.load.image('temporizador-ui', 'assets/sprites/temporizador.png');
+        this.load.image('contador-ui', 'assets/sprites/contador.png');
 
 
 

@@ -500,7 +500,7 @@
                  "visible":true,
                  "width":0,
                  "x":185.333,
-                 "y":4750.667
+                 "y":4750.67
                 }, 
                 {
                  "height":0,
@@ -512,7 +512,7 @@
                  "visible":true,
                  "width":0,
                  "x":1084.85,
-                 "y":4745.818
+                 "y":4745.82
                 }, 
                 {
                  "gid":6,
@@ -1256,8 +1256,8 @@
                  "type":"lava",
                  "visible":true,
                  "width":32,
-                 "x":574.909090909091,
-                 "y":3264.48484848485
+                 "x":574.909,
+                 "y":3264.48
                 }, 
                 {
                  "gid":6,
@@ -2232,6 +2232,50 @@
                  "width":0,
                  "x":186,
                  "y":1678
+                }, 
+                {
+                 "height":0,
+                 "id":173,
+                 "name":"",
+                 "rotation":0,
+                 "type":"moneda",
+                 "visible":true,
+                 "width":0,
+                 "x":178.787878787879,
+                 "y":3836.36363636364
+                }, 
+                {
+                 "height":0,
+                 "id":174,
+                 "name":"",
+                 "rotation":0,
+                 "type":"moneda",
+                 "visible":true,
+                 "width":0,
+                 "x":451.515151515152,
+                 "y":3163.63636363636
+                }, 
+                {
+                 "height":0,
+                 "id":175,
+                 "name":"",
+                 "rotation":0,
+                 "type":"moneda",
+                 "visible":true,
+                 "width":0,
+                 "x":169.69696969697,
+                 "y":2360.60606060606
+                }, 
+                {
+                 "height":0,
+                 "id":176,
+                 "name":"",
+                 "rotation":0,
+                 "type":"moneda",
+                 "visible":true,
+                 "width":0,
+                 "x":466.666666666667,
+                 "y":2442.42424242424
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2240,7 +2284,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":172,
+ "nextobjectid":177,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

@@ -15,13 +15,10 @@ export default class BolaFuego extends Phaser.Physics.Arcade.Sprite {
         this.body.setAllowGravity(false);
 
         this.setScale(1.55);
-
-        // this.setImmovable();
     }
 
     destruccion() {
         if (this.exploto) return;
-
         this.exploto = true;
         this.anims.play('bola-fuego-animacion').on('animationcomplete', () => {
             this.destroy();

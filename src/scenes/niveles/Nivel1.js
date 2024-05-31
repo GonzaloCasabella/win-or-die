@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import Jugador from "../../objetos/Jugador";
 import Lava from "../../objetos/Lava";
 import BolaFuego from "../../objetos/BolaFuego";
+import Moneda from "../../objetos/Moneda";
 
 export default class Nivel1 extends Phaser.Scene {
 
@@ -25,6 +26,10 @@ export default class Nivel1 extends Phaser.Scene {
 
     vidasEquipoDerecha = 3;
 
+    monedasEquipoIzquierda = 0;
+
+    monedasEquipoDerecha = 0;
+
     constructor() {
         super("Nivel1");
     }
@@ -33,6 +38,8 @@ export default class Nivel1 extends Phaser.Scene {
         this.tiempo = 30;
         this.vidasEquipoIzquierda = 3;
         this.vidasEquipoDerecha = 3;
+        this.monedasEquipoIzquierda = 0;
+        this.monedasEquipoDerecha = 0;
     }
 
 
@@ -54,6 +61,7 @@ export default class Nivel1 extends Phaser.Scene {
 
         const todasLavas = objectsLayer.objects.filter(obj => obj.type === "lava");
         const todosObsculos = objectsLayer.objects.filter(obj => obj.type === "obstaculo");
+        const todosMonedas = objectsLayer.objects.filter(obj => obj.type === "moneda");
 
 
         this.jugadorIzquierdo = new Jugador(this, spawnJugador1.x, spawnJugador1.y, "autocarrera-rojo", "izquierda");
@@ -71,6 +79,11 @@ export default class Nivel1 extends Phaser.Scene {
             allowGravity: false
         });
 
+        this.monedas = this.physics.add.group({
+            immovable: true,
+            allowGravity: false
+        });
+
         for (let i = 0; i < todasLavas.length; i += 1) {
             const lava = todasLavas[i];
             const lavaPhysics = new Lava(this, lava.x, lava.y);
@@ -84,6 +97,13 @@ export default class Nivel1 extends Phaser.Scene {
             this.obstaculos.add(obstaculoPhysics);
         }
 
+        // Crear las monedas en el mapa usando la clase Moneda
+        for (let i = 0; i < todosMonedas.length; i += 1) {
+            const moneda = todosMonedas[i];
+            const monedaPhysics = new Moneda(this, moneda.x, moneda.y, "moneda");
+            this.monedas.add(monedaPhysics);
+        }
+
         // Configuracion de las colisiones:
 
         this.physics.add.collider(this.jugadorIzquierdo, centro);
@@ -92,6 +112,8 @@ export default class Nivel1 extends Phaser.Scene {
         this.physics.add.collider(this.jugadorDerecho, this.lavaGrupo, this.collisionLava, null, this);
         this.physics.add.collider(this.jugadorIzquierdo, this.obstaculos, this.collisionObstaculo, null, this);
         this.physics.add.collider(this.jugadorDerecho, this.obstaculos, this.collisionObstaculo, null, this);
+
+        this.physics.add.overlap(this.jugadorIzquierdo, this.monedas, this.recolectarMoneda, null, this);
 
 
         // Configuracion de los controles de los jugadores:
@@ -127,6 +149,7 @@ export default class Nivel1 extends Phaser.Scene {
     update() {
         if (this.vidasEquipoIzquierda <= 0 || this.vidasEquipoDerecha <= 0) {
             // TODO: cambiar a gameover.
+            this.scene.stop("ui");
             this.scene.start("PantallaMenuPrincipal");
         }
         this.jugadorDerecho.mover(this.controlesDerechos);
@@ -149,7 +172,7 @@ export default class Nivel1 extends Phaser.Scene {
                 // jugador.recibirImpacto();
                 // jugador.x = spawnJugador.x;
                 // jugador.y = spawnJugador.y;
-
+                this.scene.stop("ui");
                 this.scene.start("PatallaGameOver");
             }
         });
@@ -157,6 +180,7 @@ export default class Nivel1 extends Phaser.Scene {
 
     collisionObstaculo(jugador, obstaculo) {
 
+        if (obstaculo.exploto) return;
         const jugadorLocal = jugador;
         jugadorLocal.puedeMoverse = false;
 
@@ -192,6 +216,13 @@ export default class Nivel1 extends Phaser.Scene {
 
         this.camaraIzquierdo.shake(100, 0.01);
         this.camaraIzquierdo.flash(100, 255, 0, 0);
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+    recolectarMoneda(jugador, moneda) {
+
+        jugador.recolectarMoneda(moneda.cantidad);
+        moneda.destroy();
     }
 
 
