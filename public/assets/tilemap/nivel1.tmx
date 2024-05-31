@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="150" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="177">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="150" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="303">
  <editorsettings>
   <export target="nivel1.json" format="json"/>
  </editorsettings>
- <tileset firstgid="1" name="atlas-lava" tilewidth="32" tileheight="32" tilecount="8" columns="8">
-  <image source="../atlas/atlas-lava.png" width="256" height="32"/>
+ <tileset firstgid="1" name="atlas-lava" tilewidth="32" tileheight="32" tilecount="9" columns="9">
+  <image source="../atlas/atlas-lava.png" width="288" height="32"/>
   <tile id="4">
    <properties>
     <property name="fuego" type="bool" value="true"/>
@@ -326,7 +326,7 @@
  </layer>
  <layer id="8" name="decoracion" width="40" height="150">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,0,0,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -479,7 +479,7 @@
 </data>
  </layer>
  <objectgroup id="6" name="objetos">
-  <object id="3" name="jugador1" x="185.333" y="4750.67">
+  <object id="3" name="jugador1" x="180.303" y="4751.46">
    <point/>
   </object>
   <object id="4" name="jugador2" x="1084.85" y="4745.82">
@@ -642,5 +642,81 @@
   <object id="174" type="moneda" x="451.515" y="3163.64"/>
   <object id="175" type="moneda" x="169.697" y="2360.61"/>
   <object id="176" type="moneda" x="466.667" y="2442.42"/>
+  <object id="184" type="meta" gid="9" x="0" y="64" width="32" height="32"/>
+  <object id="185" type="meta" gid="9" x="32" y="64" width="32" height="32"/>
+  <object id="186" type="meta" gid="9" x="64" y="64" width="32" height="32"/>
+  <object id="187" type="meta" gid="9" x="96" y="64" width="32" height="32"/>
+  <object id="188" type="meta" gid="9" x="128" y="64" width="32" height="32"/>
+  <object id="189" type="meta" gid="9" x="160" y="64" width="32" height="32"/>
+  <object id="190" type="meta" gid="9" x="192" y="64" width="32" height="32"/>
+  <object id="191" type="meta" gid="9" x="224" y="64" width="32" height="32"/>
+  <object id="192" type="meta" gid="9" x="256" y="64" width="32" height="32"/>
+  <object id="193" type="meta" gid="9" x="288" y="64" width="32" height="32"/>
+  <object id="194" type="meta" gid="9" x="320" y="64" width="32" height="32"/>
+  <object id="195" type="meta" gid="9" x="352" y="64" width="32" height="32"/>
+  <object id="196" type="meta" gid="9" x="384" y="64" width="32" height="32"/>
+  <object id="197" type="meta" gid="9" x="416" y="64" width="32" height="32"/>
+  <object id="198" type="meta" gid="9" x="448" y="64" width="32" height="32"/>
+  <object id="199" type="meta" gid="9" x="480" y="96" width="32" height="32"/>
+  <object id="200" type="meta" gid="9" x="480" y="64" width="32" height="32"/>
+  <object id="201" type="meta" gid="9" x="448" y="96" width="32" height="32"/>
+  <object id="202" type="meta" gid="9" x="416" y="96" width="32" height="32"/>
+  <object id="203" type="meta" gid="9" x="384" y="96" width="32" height="32"/>
+  <object id="204" type="meta" gid="9" x="352" y="96" width="32" height="32"/>
+  <object id="205" type="meta" gid="9" x="320" y="96" width="32" height="32"/>
+  <object id="206" type="meta" gid="9" x="288" y="96" width="32" height="32"/>
+  <object id="207" type="meta" gid="9" x="256" y="96" width="32" height="32"/>
+  <object id="208" type="meta" gid="9" x="224" y="96" width="32" height="32"/>
+  <object id="209" type="meta" gid="9" x="192" y="96" width="32" height="32"/>
+  <object id="210" type="meta" gid="9" x="160" y="96" width="32" height="32"/>
+  <object id="211" type="meta" gid="9" x="128" y="96" width="32" height="32"/>
+  <object id="212" type="meta" gid="9" x="96" y="96" width="32" height="32"/>
+  <object id="213" type="meta" gid="9" x="32" y="96" width="32" height="32"/>
+  <object id="214" type="meta" gid="9" x="64" y="96" width="32" height="32"/>
+  <object id="215" type="meta" gid="9" x="0" y="96" width="32" height="32"/>
+  <object id="216" type="meta" gid="9" x="512" y="96" width="32" height="32"/>
+  <object id="217" type="meta" gid="9" x="512" y="64" width="32" height="32"/>
+  <object id="218" type="meta" gid="9" x="544" y="64" width="32" height="32"/>
+  <object id="219" type="meta" gid="9" x="544" y="96" width="32" height="32"/>
+  <object id="220" type="meta" gid="9" x="576" y="64" width="32" height="32"/>
+  <object id="221" type="meta" gid="9" x="576" y="96" width="32" height="32"/>
+  <object id="222" type="meta" gid="9" x="672" y="64" width="32" height="32"/>
+  <object id="223" type="meta" gid="9" x="672" y="96" width="32" height="32"/>
+  <object id="224" type="meta" gid="9" x="704" y="64" width="32" height="32"/>
+  <object id="225" type="meta" gid="9" x="704" y="96" width="32" height="32"/>
+  <object id="226" type="meta" gid="9" x="736" y="64" width="32" height="32"/>
+  <object id="227" type="meta" gid="9" x="736" y="96" width="32" height="32"/>
+  <object id="228" type="meta" gid="9" x="768" y="64" width="32" height="32"/>
+  <object id="229" type="meta" gid="9" x="800" y="96" width="32" height="32"/>
+  <object id="230" type="meta" gid="9" x="768" y="96" width="32" height="32"/>
+  <object id="231" type="meta" gid="9" x="800" y="64" width="32" height="32"/>
+  <object id="232" type="meta" gid="9" x="832" y="96" width="32" height="32"/>
+  <object id="233" type="meta" gid="9" x="832" y="64" width="32" height="32"/>
+  <object id="234" type="meta" gid="9" x="864" y="64" width="32" height="32"/>
+  <object id="235" type="meta" gid="9" x="864" y="96" width="32" height="32"/>
+  <object id="236" type="meta" gid="9" x="896" y="64" width="32" height="32"/>
+  <object id="237" type="meta" gid="9" x="896" y="96" width="32" height="32"/>
+  <object id="238" type="meta" gid="9" x="928" y="64" width="32" height="32"/>
+  <object id="239" type="meta" gid="9" x="928" y="96" width="32" height="32"/>
+  <object id="240" type="meta" gid="9" x="960" y="64" width="32" height="32"/>
+  <object id="241" type="meta" gid="9" x="960" y="96" width="32" height="32"/>
+  <object id="242" type="meta" gid="9" x="992" y="64" width="32" height="32"/>
+  <object id="243" type="meta" gid="9" x="1024" y="96" width="32" height="32"/>
+  <object id="244" type="meta" gid="9" x="1024" y="64" width="32" height="32"/>
+  <object id="245" type="meta" gid="9" x="992" y="96" width="32" height="32"/>
+  <object id="246" type="meta" gid="9" x="1056" y="64" width="32" height="32"/>
+  <object id="247" type="meta" gid="9" x="1056" y="96" width="32" height="32"/>
+  <object id="248" type="meta" gid="9" x="1088" y="64" width="32" height="32"/>
+  <object id="249" type="meta" gid="9" x="1088" y="96" width="32" height="32"/>
+  <object id="250" type="meta" gid="9" x="1120" y="64" width="32" height="32"/>
+  <object id="251" type="meta" gid="9" x="1120" y="96" width="32" height="32"/>
+  <object id="252" type="meta" gid="9" x="1152" y="64" width="32" height="32"/>
+  <object id="253" type="meta" gid="9" x="1152" y="96" width="32" height="32"/>
+  <object id="254" type="meta" gid="9" x="1184" y="64" width="32" height="32"/>
+  <object id="255" type="meta" gid="9" x="1184" y="96" width="32" height="32"/>
+  <object id="256" type="meta" gid="9" x="1248" y="64" width="32" height="32"/>
+  <object id="257" type="meta" gid="9" x="1248" y="96" width="32" height="32"/>
+  <object id="258" type="meta" gid="9" x="1216" y="64" width="32" height="32"/>
+  <object id="259" type="meta" gid="9" x="1216" y="96" width="32" height="32"/>
  </objectgroup>
 </map>
