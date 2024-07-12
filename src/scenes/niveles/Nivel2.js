@@ -1,11 +1,11 @@
 import Phaser from "phaser";
 import Jugador from "../../objetos/Jugador";
 import Lava from "../../objetos/Lava";
-import BolaFuego from "../../objetos/BolaFuego";
 import Moneda from "../../objetos/Moneda";
 import Meta from "../../objetos/Meta";
+import Palmera from "../../objetos/Palmera";
 
-export default class Nivel1 extends Phaser.Scene {
+export default class Nivel2 extends Phaser.Scene {
 
     ganador;
 
@@ -33,23 +33,38 @@ export default class Nivel1 extends Phaser.Scene {
 
     monedasEquipoDerecha = 0;
 
+
     constructor() {
-        super("Nivel1");
+        super("Nivel2");
     }
 
-    init() {
+    init(data) {
+
         this.tiempo = 30;
         this.vidasEquipoIzquierda = 3;
         this.vidasEquipoDerecha = 3;
-        this.monedasEquipoIzquierda = 0;
+
+        if (data.ganador.ladoEquipo === "izquierda") {
+            this.jugadorIzquierdo = data.ganador;
+            this.jugadorDerecho = data.perdedor;
+        } else {
+            this.jugadorIzquierdo = data.perdedor;
+            this.jugadorDerecho = data.ganador;
+        }
+
+
+        this.monedasEquipoIzquierda = data.ganador.monedas;
         this.monedasEquipoDerecha = 0;
+        // Puntos
 
         this.ganador = null;
+
+
     }
 
 
     create() {
-        this.map = this.make.tilemap({ key: "nivel1" });
+        this.map = this.make.tilemap({ key: "nivel2" });
         const tiled = this.map.addTilesetImage("atlas-lava", "atlas-lava");
         this.map.createLayer("piso", tiled);
 
@@ -70,8 +85,10 @@ export default class Nivel1 extends Phaser.Scene {
         const todosMetas = objectsLayer.objects.filter(obj => obj.type === "meta");
 
 
-        this.jugadorIzquierdo = new Jugador(this, spawnJugador1.x, spawnJugador1.y, "autocarrera-rojo", "izquierda");
-        this.jugadorDerecho = new Jugador(this, spawnJugador2.x, spawnJugador2.y, "autocarrera-lila", "derecha");
+
+        this.jugadorIzquierdo = new Jugador(this, spawnJugador1.x, spawnJugador1.y, "astronautamoto-rojo", "izquierda", this.jugadorIzquierdo);
+        this.jugadorDerecho = new Jugador(this, spawnJugador2.x, spawnJugador2.y, "astronautamoto-lila", "derecha", this.jugadorDerecho);
+
 
         // Creacion de grupos de obstaculos:
 
@@ -103,7 +120,7 @@ export default class Nivel1 extends Phaser.Scene {
         // crear los boscatulos en el mapa, usando las clase de BolaFuego
         for (let i = 0; i < todosObsculos.length; i += 1) {
             const obstaculo = todosObsculos[i];
-            const obstaculoPhysics = new BolaFuego(this, obstaculo.x, obstaculo.y);
+            const obstaculoPhysics = new Palmera(this, obstaculo.x, obstaculo.y);
             this.obstaculos.add(obstaculoPhysics);
         }
 
@@ -256,9 +273,6 @@ export default class Nivel1 extends Phaser.Scene {
         const jugadorPerdedor = jugadores.find(j => j !== jugador);
 
         this.scene.stop("ui");
-        // this.scene.start("PantallaFinRonda", { ganador: this.ganador, perdedor: jugadorPerdedor });
-        this.scene.start("Nivel2", { ganador: this.ganador, perdedor: jugadorPerdedor });
+        this.scene.start("PantallaFinRonda", { ganador: this.ganador, perdedor: jugadorPerdedor });
     }
-
-
 }

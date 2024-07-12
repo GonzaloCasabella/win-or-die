@@ -45,15 +45,12 @@ export default class UI extends Phaser.Scene {
         fill: true,
       },
     }).setOrigin(0.5);
+
+    this.jugadorIzquierdo = data.jugadorIzquierdo;
+    this.jugadorDerecho = data.jugadorDerecho;
   }
 
   create() {
-    this.colliderCount = 0;
-    // add text with count collider and date
-    this.text = this.add.text(10, 10, `Collider count: ${this.colliderCount}`, {
-      font: "16px Courier",
-      fill: "#00ff00",
-    });
 
 
 
@@ -64,8 +61,6 @@ export default class UI extends Phaser.Scene {
       loop: true,
     });
 
-    // add listener to the event
-    events.on("collider-event", this.colliderEvent, this);
 
     this.crearTemporizador();
     this.crearContadoresMonedas();
@@ -74,22 +69,11 @@ export default class UI extends Phaser.Scene {
 
     events.on("moneda-recolectada", (ladoEquipo, numero) => {
       if (ladoEquipo === "izquierda") {
-        this.textoIzquierda.setText(`${numero}`);
+        this.textoIzquierda.setText(`${this.jugadorIzquierdo.monedas || numero}`);
       } else if (ladoEquipo === "derecha") {
-        this.textoDerecha.setText(`${numero}`);
+        this.textoDerecha.setText(`${this.jugadorDerecho.monedas || numero}`);
       }
     });
-  }
-
-
-
-  colliderEvent(data) {
-
-    // update text
-    this.colliderCount += 1;
-    this.text.setText(
-      `Collider count: ${this.colliderCount} / Last: ${data.fecha}`
-    );
   }
 
   crearTemporizador() {
@@ -136,7 +120,7 @@ export default class UI extends Phaser.Scene {
     const btnWAD = this.add.image(-background.width + (background.width * 0.75), -35, "botonWAD").setOrigin(0.5).setScale(0.8);
     const btnFlechas = this.add.image(background.width - (background.width * 0.75), -35, "botonesFlechas").setOrigin(0.5).setScale(0.8);
 
-    this.textoIzquierda = this.add.text(-background.width + (background.width * 0.75), background.height / 2 - 10, "0", {
+    this.textoIzquierda = this.add.text(-background.width + (background.width * 0.75), background.height / 2 - 10, `${this.jugadorIzquierdo.monedas || 0}`, {
       fontFamily: "AlarmClock",
       fontSize: "30px",
       color: "#c81000",
@@ -152,7 +136,7 @@ export default class UI extends Phaser.Scene {
       },
     }).setOrigin(0.5);
 
-    this.textoDerecha = this.add.text(background.width - (background.width * 0.75), background.height / 2 - 10, "0", {
+    this.textoDerecha = this.add.text(background.width - (background.width * 0.75), background.height / 2 - 10, `${this.jugadorDerecho.monedas || 0}`, {
       fontFamily: "AlarmClock",
       fontSize: "30px",
       color: "#7000b6",

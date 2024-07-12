@@ -20,22 +20,8 @@ export default class PantallaFinRonda extends Phaser.Scene {
 
         this.add.text((this.scale.width / 2), (this.scale.height / 2) - 300, "Fin de Ronda", { fontSize: '50px', fontStyle: 'bold', color: 'white', fontFamily: 'AnyMale', stroke: 'black', strokeThickness: 6 }).setOrigin(0.5);
 
-
-
-        // crear un conentedor para el jugador de la izquierda que tenga la imagen del jugador y el nombre, el numero de monedas y el numero de rondas ganadas
-
-
         this.crearContenedorJugador(this.ganador, "J1", "Gana", this.scale.width - ((this.scale.width / 2) + (this.scale.width / 2) / 2), this.scale.height / 2)
         this.crearContenedorJugador(this.perdedor, "J1", "Pierde", (this.scale.width / 2) + (this.scale.width / 2) / 2, this.scale.height / 2)
-
-
-
-        // this.add.text(400, 100, "Gana", { fontFamily: 'Arial', fontSize: 40, color: '#ffffff' }).setOrigin(0.5);
-        // this.add.image(400, 150, this.ganador.textura).setOrigin(0.5);
-
-        // this.add.text(400, 200, this.ganador.monedas, { fontFamily: 'Arial', fontSize: 40, color: '#ffffff' }).setOrigin(0.5);
-
-        // this.add.text(400, 300, this.ganador.numeroRondasGanadas, { fontFamily: 'Arial', fontSize: 40, color: '#ffffff' }).setOrigin(0.5);
 
         // eslint-disable-next-line no-new
         new Boton(this, this.scale.width / 2, (this.scale.height / 2) + 200, 'Siguiente Ronda', () => {

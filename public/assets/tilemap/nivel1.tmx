@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="150" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="507">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="150" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="514">
  <editorsettings>
   <export target="nivel1.json" format="json"/>
  </editorsettings>
- <tileset firstgid="1" name="atlas-lava" tilewidth="32" tileheight="32" tilecount="9" columns="9">
-  <image source="../atlas/atlas-lava.png" width="288" height="32"/>
+ <tileset firstgid="1" name="atlas-lava" tilewidth="32" tileheight="32" tilecount="10" columns="10">
+  <image source="../atlas/atlas-lava.png" width="320" height="32"/>
   <tile id="4">
    <properties>
     <property name="fuego" type="bool" value="true"/>
@@ -479,9 +479,6 @@
 </data>
  </layer>
  <objectgroup id="6" name="objetos">
-  <object id="3" name="jugador1" x="176" y="4749.28">
-   <point/>
-  </object>
   <object id="4" name="jugador2" x="1084.85" y="4745.82">
    <point/>
   </object>
@@ -763,37 +760,19 @@
   <object id="358" type="lava" gid="6" x="992" y="2016" width="32" height="32"/>
   <object id="359" type="lava" gid="6" x="992" y="2016" width="32" height="32"/>
   <object id="360" type="lava" gid="6" x="960" y="2016" width="32" height="32"/>
-  <object id="361" type="lava" gid="6" x="993.333" y="4640" width="32" height="32"/>
-  <object id="362" type="lava" gid="6" x="960" y="4640" width="32" height="32"/>
-  <object id="363" type="lava" gid="6" x="928" y="4640" width="32" height="32"/>
-  <object id="364" type="lava" gid="6" x="896" y="4640" width="32" height="32"/>
-  <object id="365" type="lava" gid="6" x="928" y="4608" width="32" height="32"/>
-  <object id="366" type="lava" gid="6" x="928" y="4608" width="32" height="32"/>
-  <object id="367" type="lava" gid="6" x="960" y="4608" width="32" height="32"/>
-  <object id="368" type="lava" gid="6" x="896" y="4608" width="32" height="32"/>
-  <object id="369" type="lava" gid="6" x="896" y="4544" width="32" height="32"/>
-  <object id="370" type="lava" gid="6" x="928" y="4544" width="32" height="32"/>
-  <object id="371" type="lava" gid="6" x="928" y="4512" width="32" height="32"/>
-  <object id="372" type="lava" gid="6" x="896" y="4512" width="32" height="32"/>
-  <object id="381" type="obstaculo" x="836" y="2446.67">
+  <object id="381" type="obstaculo" x="825.333" y="2792">
    <ellipse/>
   </object>
-  <object id="382" type="obstaculo" x="856" y="2408">
+  <object id="382" type="obstaculo" x="830.667" y="2353.33">
    <ellipse/>
   </object>
-  <object id="383" type="obstaculo" x="1046.67" y="2410.67" width="1.33333">
+  <object id="384" type="obstaculo" x="1106.67" y="2313.33">
    <ellipse/>
   </object>
-  <object id="384" type="obstaculo" x="1034.67" y="2340">
+  <object id="385" type="obstaculo" x="1093.33" y="2118.67">
    <ellipse/>
   </object>
-  <object id="385" type="obstaculo" x="981.333" y="2296">
-   <ellipse/>
-  </object>
-  <object id="386" type="obstaculo" x="1189.33" y="4585.33">
-   <ellipse/>
-  </object>
-  <object id="387" type="obstaculo" x="1089.33" y="4436">
+  <object id="387" type="obstaculo" x="1087.66" y="4155.5">
    <ellipse/>
   </object>
   <object id="388" type="obstaculo" x="834.667" y="4512" height="1.33333">
@@ -802,13 +781,10 @@
   <object id="389" type="obstaculo" x="788" y="4400" width="1.33333">
    <ellipse/>
   </object>
-  <object id="390" type="obstaculo" x="912" y="4373.33" height="2.66667">
-   <ellipse/>
-  </object>
   <object id="391" type="obstaculo" x="1090.67" y="4250.67">
    <ellipse/>
   </object>
-  <object id="392" type="obstaculo" x="862.667" y="4234.67">
+  <object id="392" type="obstaculo" x="828" y="4150.67">
    <ellipse/>
   </object>
   <object id="393" type="obstaculo" x="1113.33" y="1793.33">
@@ -829,13 +805,13 @@
   <object id="398" type="obstaculo" x="1125.33" y="1186.67">
    <ellipse/>
   </object>
-  <object id="399" type="obstaculo" x="788" y="1229.33">
+  <object id="399" type="obstaculo" x="818.667" y="1228">
    <ellipse/>
   </object>
-  <object id="400" type="obstaculo" x="774.667" y="977.333">
+  <object id="400" type="obstaculo" x="821.334" y="976">
    <ellipse/>
   </object>
-  <object id="401" type="obstaculo" x="1125.33" y="878.667">
+  <object id="401" type="obstaculo" x="1100" y="972">
    <ellipse/>
   </object>
   <object id="402" type="obstaculo" x="1040" y="528">
@@ -848,9 +824,6 @@
    <ellipse/>
   </object>
   <object id="405" type="obstaculo" x="1097.33" y="276" width="1.33333">
-   <ellipse/>
-  </object>
-  <object id="406" type="obstaculo" x="818.667" y="181.333" width="2.66667">
    <ellipse/>
   </object>
   <object id="407" type="obstaculo" x="1228" y="182.667">
@@ -877,84 +850,62 @@
   <object id="414" type="obstaculo" x="1212" y="2040">
    <ellipse/>
   </object>
-  <object id="415" type="obstaculo" x="1217.33" y="2349.33" width="1.33333" height="2.66667">
-   <ellipse/>
-  </object>
   <object id="416" type="obstaculo" x="1234.67" y="2880">
-   <ellipse/>
-  </object>
-  <object id="417" type="obstaculo" x="1218.67" y="3156" width="2.66667">
    <ellipse/>
   </object>
   <object id="418" type="obstaculo" x="1050.67" y="3136" width="1.33333">
    <ellipse/>
   </object>
-  <object id="419" type="obstaculo" x="1202.67" y="3513.33">
+  <object id="419" type="obstaculo" x="1094.67" y="3470.66">
    <ellipse/>
   </object>
-  <object id="420" type="obstaculo" x="1205.33" y="3948">
+  <object id="420" type="obstaculo" x="825.33" y="3846.67">
    <ellipse/>
   </object>
-  <object id="421" type="obstaculo" x="1218.67" y="4397.33">
-   <ellipse/>
-  </object>
-  <object id="422" type="moneda" x="1005.33" y="4208"/>
-  <object id="423" type="moneda" x="1214.67" y="4196"/>
-  <object id="424" type="moneda" x="1196" y="4721.33"/>
-  <object id="425" type="moneda" x="1202.67" y="4648"/>
-  <object id="426" type="moneda" x="1218.67" y="4368"/>
-  <object id="427" type="moneda" x="1129.33" y="4085.33"/>
-  <object id="428" type="moneda" x="1034.67" y="3781.33"/>
-  <object id="429" type="moneda" x="1258.67" y="3649.33"/>
-  <object id="430" type="moneda" x="1180" y="3354.67"/>
-  <object id="431" type="moneda" x="1240" y="3282.67"/>
-  <object id="432" type="moneda" x="1158.67" y="3030.67" width="6.66667"/>
+  <object id="422" type="moneda" x="1210.66" y="4132"/>
+  <object id="427" type="moneda" x="1092" y="4074.66"/>
+  <object id="428" type="moneda" x="1094.67" y="3733.33"/>
+  <object id="429" type="moneda" x="824.003" y="3470.66"/>
+  <object id="430" type="moneda" x="1082.67" y="3229.34"/>
+  <object id="431" type="moneda" x="1086.67" y="3321.34"/>
   <object id="433" type="moneda" x="1057.33" y="3021.33"/>
   <object id="434" type="moneda" x="1058.67" y="2942.67" width="1.33333"/>
   <object id="435" type="moneda" x="1061.33" y="2860"/>
-  <object id="436" type="moneda" x="957.333" y="2662.67" height="1.33333"/>
-  <object id="437" type="moneda" x="961.333" y="2562.67"/>
-  <object id="438" type="moneda" x="1217.33" y="2546.67" width="1.33333" height="2.66667"/>
-  <object id="439" type="moneda" x="1220" y="2378.67"/>
-  <object id="440" type="moneda" x="1053.33" y="2404" width="1.33333"/>
-  <object id="441" type="moneda" x="958.667" y="2172"/>
+  <object id="437" type="moneda" x="961.333" y="2574.67"/>
+  <object id="439" type="moneda" x="1084" y="2513.34"/>
+  <object id="441" type="moneda" x="822.667" y="2074.67"/>
   <object id="442" type="moneda" x="1106.67" y="2013.33" width="1.33333" height="1.33333"/>
   <object id="443" type="moneda" x="1008" y="1582.67"/>
   <object id="444" type="moneda" x="1205.33" y="1453.33"/>
   <object id="445" type="moneda" x="1124" y="1154.67"/>
-  <object id="446" type="moneda" x="936" y="1253.33"/>
+  <object id="446" type="moneda" x="953.333" y="1224"/>
   <object id="447" type="moneda" x="945.333" y="1098.67" height="1.33333"/>
   <object id="448" type="moneda" x="1234.67" y="1009.33" height="1.33333"/>
-  <object id="449" type="moneda" x="1218.67" y="636" height="1.33333"/>
+  <object id="449" type="moneda" x="1104" y="165.333" width="25.3333" height="22.6667"/>
   <object id="450" type="moneda" x="950.667" y="585.333"/>
   <object id="451" type="moneda" x="1232" y="426.667"/>
-  <object id="452" type="moneda" x="1025.33" y="341.333"/>
+  <object id="452" type="moneda" x="834.663" y="185.333"/>
   <object id="453" type="moneda" x="1052" y="122.667" height="1.33333"/>
-  <object id="454" type="moneda" x="750.667" y="238.667" height="1.33333"/>
   <object id="455" type="moneda" x="686.667" y="568"/>
   <object id="456" type="moneda" x="597.333" y="542.667"/>
-  <object id="457" type="moneda" x="689.333" y="682.667"/>
-  <object id="458" type="moneda" x="682.667" y="1085.33"/>
-  <object id="459" type="moneda" x="682.667" y="822.667"/>
+  <object id="457" type="moneda" x="1101.33" y="758.667"/>
+  <object id="458" type="moneda" x="709.334" y="1032"/>
+  <object id="459" type="moneda" x="822.667" y="773.334"/>
   <object id="460" type="moneda" x="686.667" y="1632"/>
   <object id="461" type="moneda" x="600" y="1317.33" height="1.33333"/>
   <object id="462" type="moneda" x="592" y="1772"/>
   <object id="463" type="moneda" x="716" y="1982.67" width="1.33333" height="1.33333"/>
   <object id="464" type="moneda" x="710.667" y="2342.67"/>
   <object id="465" type="moneda" x="709.333" y="2573.33"/>
-  <object id="466" type="moneda" x="704" y="2906.67" width="1.33333"/>
   <object id="467" type="moneda" x="964" y="2953.33"/>
   <object id="468" type="moneda" x="722.667" y="3274.67" height="1.33333"/>
   <object id="469" type="moneda" x="937.333" y="3101.33"/>
-  <object id="470" type="moneda" x="908" y="3326.67"/>
-  <object id="471" type="moneda" x="786.667" y="3217.33"/>
+  <object id="470" type="moneda" x="822.667" y="3314.67"/>
+  <object id="471" type="moneda" x="824" y="3198.66"/>
   <object id="472" type="moneda" x="865.333" y="3598.67" width="1.33333"/>
-  <object id="473" type="moneda" x="852" y="3854.67"/>
+  <object id="473" type="moneda" x="825.333" y="3730.67"/>
   <object id="475" type="moneda" x="422.667" y="3918.67" width="2.66667"/>
-  <object id="476" type="moneda" x="696" y="4300"/>
-  <object id="477" type="moneda" x="710.667" y="4050.67" width="1.33333" height="2.66667"/>
-  <object id="478" type="moneda" x="726.667" y="4584"/>
-  <object id="480" type="moneda" x="872" y="4618.67"/>
+  <object id="476" type="moneda" x="966.667" y="3853.33"/>
   <object id="481" type="moneda" x="38.6667" y="4680"/>
   <object id="482" type="moneda" x="57.3333" y="4526.67"/>
   <object id="483" type="moneda" x="360" y="4678.67"/>
@@ -981,5 +932,10 @@
   <object id="504" type="moneda" x="69.3333" y="1942.67" width="1.33333"/>
   <object id="505" type="moneda" x="408" y="120" width="1.33333"/>
   <object id="506" type="moneda" x="273.333" y="228"/>
+  <object id="508" type="moneda" x="188" y="882"/>
+  <object id="509" type="moneda" x="442" y="502.667"/>
+  <object id="513" name="jugador1" x="208" y="4726">
+   <point/>
+  </object>
  </objectgroup>
 </map>
