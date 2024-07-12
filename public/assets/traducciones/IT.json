@@ -1,0 +1,56 @@
+{
+    "project": "proyecto 1",
+    "language": "it",
+    "words": [
+        {
+            "id": 1,
+            "key": "Entrar",
+            "translate": "Entra"
+        },
+        {
+            "id": 1,
+            "key": "Equipo",
+            "translate": "Squadra"
+        },
+        {
+            "id": 1,
+            "key": "Controles",
+            "translate": "Controlli"
+        },
+        {
+            "id": 1,
+            "key": "Volver",
+            "translate": "Retornaré"
+        },
+        {
+            "id": 1,
+            "key": "Termina En",
+            "translate": "Finisce in:"
+        },
+        {
+            "id": 1,
+            "key": "Jugador/a",
+            "translate": "Giocatore"
+        },
+        {
+            "id": 1,
+            "key": "Fin de nivel",
+            "translate": "Fine livello"
+        },
+        {
+            "id": 1,
+            "key": "Ganador",
+            "translate": "Vincitore"
+        },
+        {
+            "id": 1,
+            "key": "Perdedor",
+            "translate": "Perdente"
+        },
+        {
+            "id": 1,
+            "key": "Siguiente nivel",
+            "translate": "Seguente livello"
+        }
+    ]
+}
