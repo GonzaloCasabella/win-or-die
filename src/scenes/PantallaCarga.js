@@ -19,12 +19,18 @@ export default class PantallaCarga extends Phaser.Scene {
         this.load.image('autocarrera-rojo', 'assets/sprites/autos/autocarrera-rojo.png');
         this.load.image('autocarrera-lila', 'assets/sprites/autos/autocarrera-lila.png');
 
+        this.load.image("astronautamoto-rojo", "assets/sprites/autos/astronautamoto-rojo.png");
+        this.load.image("astronautamoto-lila", "assets/sprites/autos/astronautamoto-lila.png");
+
         // Bolas de fuego
         this.load.image('bola-fuego', 'assets/sprites/bola-fuego.png');
         this.load.spritesheet('bola-fuego-spritesheet', 'assets/sprites/bola-fuego-spritesheet.png', { frameWidth: 32, frameHeight: 32 });
 
+        this.load.image('palmera', 'assets/sprites/palmera.png');
+
         // tilemap
         this.load.tilemapTiledJSON("nivel1", "assets/tilemap/nivel1.json");
+        this.load.tilemapTiledJSON("nivel2", "assets/tilemap/nivel2.json");
 
         // Atlas
         this.load.image('atlas-lava', 'assets/atlas/atlas-lava.png');
