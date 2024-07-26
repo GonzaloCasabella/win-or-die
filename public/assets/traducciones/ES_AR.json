@@ -1,0 +1,56 @@
+{
+    "project": "proyecto 1",
+    "language": "es",
+    "words": [
+        {
+            "id": 1,
+            "key": "Entrar",
+            "translate": "Entrar"
+        },
+        {
+            "id": 1,
+            "key": "Equipo",
+            "translate": "Equipo"
+        },
+        {
+            "id": 1,
+            "key": "Controles",
+            "translate": "Controles"
+        },
+        {
+            "id": 1,
+            "key": "Volver",
+            "translate": "Volver"
+        },
+        {
+            "id": 1,
+            "key": "Termina En",
+            "translate": "Termina En"
+        },
+        {
+            "id": 1,
+            "key": "Jugador/a",
+            "translate": "Jugador/a"
+        },
+        {
+            "id": 1,
+            "key": "Fin de nivel",
+            "translate": "Fin de nivel"
+        },
+        {
+            "id": 1,
+            "key": "Ganador",
+            "translate": "Ganador"
+        },
+        {
+            "id": 1,
+            "key": "Perdedor",
+            "translate": "Perdedor"
+        },
+        {
+            "id": 1,
+            "key": "Siguiente nivel",
+            "translate": "Siguiente nivel"
+        }
+    ]
+}

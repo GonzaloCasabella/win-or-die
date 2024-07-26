@@ -1,9 +1,9 @@
 import Phaser from "phaser";
 import Boton from "../objetos/Boton";
 
-export default class PatallaGameOver extends Phaser.Scene {
+export default class PantallaGameOver extends Phaser.Scene {
     constructor() {
-        super("PatallaGameOver");
+        super("PantallaGameOver");
     }
 
 

@@ -192,7 +192,7 @@ export default class Nivel2 extends Phaser.Scene {
         if (this.vidasEquipoIzquierda <= 0 || this.vidasEquipoDerecha <= 0) {
             // TODO: cambiar a gameover.
             this.scene.stop("ui");
-            this.scene.start("PantallaMenuPrincipal");
+            this.scene.start("PantallaGameOver");
         }
         this.jugadorDerecho.mover(this.controlesDerechos);
 
@@ -212,7 +212,7 @@ export default class Nivel2 extends Phaser.Scene {
             ease: 'Linear',
             onComplete: () => {
                 this.scene.stop("ui");
-                this.scene.start("PatallaGameOver");
+                this.scene.start("PantallaGameOver");
             }
         });
     }
