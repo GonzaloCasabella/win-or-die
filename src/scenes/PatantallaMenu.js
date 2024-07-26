@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 import BotonAmarrillo from "../objetos/BotonAmarrillo";
+import { getPhrase } from "../traducciones";
+import { sceneMenu } from "../traducciones/keys";
 
 export default class PantallaMenu extends Phaser.Scene {
     constructor() {
@@ -16,11 +18,11 @@ export default class PantallaMenu extends Phaser.Scene {
         this.rectangle.alpha = 0.5;
 
         // eslint-disable-next-line no-new
-        new BotonAmarrillo(this, 140, (this.scale.height / 2), 'Equipo', () => {
+        new BotonAmarrillo(this, 140, (this.scale.height / 2), getPhrase(sceneMenu.equipo), () => {
             this.scene.start('Nivel1');
         }, 1, 50, 'fondo-boton');
         // eslint-disable-next-line no-new
-        new BotonAmarrillo(this, 140, (this.scale.height / 2) + 100, 'Controles', () => {
+        new BotonAmarrillo(this, 140, (this.scale.height / 2) + 100, getPhrase(sceneMenu.controles), () => {
             this.scene.start('PantallaControles');
         }, 1, 50, 'fondo-boton');
 
