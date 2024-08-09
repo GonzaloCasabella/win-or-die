@@ -5,7 +5,7 @@ import PantallaMenuPrincipal from "./scenes/PantallaMenuPrincipal";
 import PantallaMenu from "./scenes/PatantallaMenu";
 import PantallaControles from "./scenes/PantallaControles";
 import Nivel1 from "./scenes/niveles/Nivel1";
-import PatallaGameOver from "./scenes/PantallaGameOver";
+import PantallaGameOver from "./scenes/PantallaGameOver";
 import PantallaFinRonda from "./scenes/PantallaFinRonda";
 import Nivel2 from "./scenes/niveles/Nivel2";
 
@@ -32,7 +32,7 @@ const config = {
       debug: true,
     },
   },
-  scene: [PantallaCarga, PantallaMenuPrincipal, PantallaMenu, PantallaControles, Nivel1, Nivel2, UI, PatallaGameOver, PantallaFinRonda],
+  scene: [PantallaCarga, PantallaMenuPrincipal, PantallaMenu, PantallaControles, Nivel1, Nivel2, UI, PantallaGameOver, PantallaFinRonda],
 };
 
 export default new Phaser.Game(config);

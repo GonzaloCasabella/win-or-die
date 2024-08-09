@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 import events from "./EventCenter";
+import { getPhrase } from "../traducciones";
+import { sceneUI } from "../traducciones/keys";
 
 // Manejador de eventos centralizados para comunicacion de componentes
 
@@ -27,6 +29,7 @@ export default class UI extends Phaser.Scene {
   }
 
   init(data) {
+    this.gameOver = false;
     this.tiempoInicial = data.tiempo;
     this.contadorTiempo = this.tiempoInicial;
     this.temporizadorTexto = this.add.text(this.scale.width / 2, 80, `${this.contadorTiempo}`, {
@@ -79,6 +82,12 @@ export default class UI extends Phaser.Scene {
   crearTemporizador() {
     const uiArriba = this.add.image(this.scale.width / 2, 0, "temporizador-ui").setOrigin(0.5, 0);
     uiArriba.setScale(0.75)
+    this.add.text(this.scale.width / 2, 14, getPhrase(sceneUI.terminaEn), {
+      fontFamily: "AlarmClock",
+      fontStyle: "bold",
+      fontSize: "18px",
+      color: "#ffffff",
+    }).setOrigin(0.5);
     this.temporizadorTexto = this.add.text(this.scale.width / 2, 80, `${this.contadorTiempo}`, {
       fontFamily: "AlarmClock",
       fontStyle: "bold",
@@ -105,13 +114,13 @@ export default class UI extends Phaser.Scene {
 
     // Crea un texto en la parte superior iz y derecha. con Jugador/a 1 y Jugador/a 2
 
-    const textoJugador1 = this.add.text(-background.width + (background.width * 0.75), 0 + 14, "Jugador/a 1", {
+    const textoJugador1 = this.add.text(-background.width + (background.width * 0.75), 0 + 14, `${getPhrase(sceneUI.player)} 1`, {
       fontFamily: "AnyMale",
       fontSize: "16px",
       color: "#fff",
     }).setOrigin(0.5);
 
-    const textoJugador2 = this.add.text(background.width - (background.width * 0.75), 0 + 14, "Jugador/a 2", {
+    const textoJugador2 = this.add.text(background.width - (background.width * 0.75), 0 + 14, `${getPhrase(sceneUI.player)} 2`, {
       fontFamily: "AnyMale",
       fontSize: "16px",
       color: "#fff",
@@ -162,7 +171,12 @@ export default class UI extends Phaser.Scene {
     this.contadorTiempo -= 1;
     this.temporizadorTexto.setText(`${this.contadorTiempo}`);
 
-    if (this.contadorTiempo <= 0) {
+    if (this.contadorTiempo <= 0 && !this.gameOver) {
+      this.gameOver = true;
+      this.scene.manager.getScenes(true).forEach(escena => {
+        escena.scene.stop();
+      });
+
       this.scene.start("PantallaGameOver");
     }
   }

@@ -1,4 +1,6 @@
 import Phaser from "phaser";
+import { getTranslations } from "../traducciones";
+import { ES_AR } from "../traducciones/languages";
 
 export default class PantallaCarga extends Phaser.Scene {
     constructor() {
@@ -6,7 +8,7 @@ export default class PantallaCarga extends Phaser.Scene {
     }
 
     preload() {
-
+        getTranslations(ES_AR).then(res => res);
         // Backgrounds
         this.load.image('fondo-carga', 'assets/fondos/fondo-carga.jpeg')
         this.load.image('fondo-menu', 'assets/fondos/fondo-menu.jpeg')
@@ -45,6 +47,10 @@ export default class PantallaCarga extends Phaser.Scene {
         this.load.image('contador-ui', 'assets/sprites/contador.png');
 
 
+        // Idiomas
+        this.load.image("bandera-it", "assets/sprites/idiomas/it.jpeg");
+        this.load.image("bandera-es", "assets/sprites/idiomas/es.jpeg");
+        this.load.image("bandera-usa", "assets/sprites/idiomas/usa.jpeg");
 
         this.barraDeCarga();
     }
