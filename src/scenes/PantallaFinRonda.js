@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import Boton from "../objetos/Boton";
 import { getPhrase } from "../traducciones";
 import { sceneFinRonda } from "../traducciones/keys";
+import setWinner from "../firebase/setWinner";
 
 export default class PantallaFinRonda extends Phaser.Scene {
     ganador;
@@ -17,7 +18,7 @@ export default class PantallaFinRonda extends Phaser.Scene {
         this.perdedor = data.perdedor;
     }
 
-    create() {
+    async create() {
         this.add.image(0, 0, "fondo-menu").setOrigin(0).setAlpha(0.5);
 
         this.add.text((this.scale.width / 2), (this.scale.height / 2) - 300, getPhrase(sceneFinRonda.finNivel), { fontSize: '50px', fontStyle: 'bold', color: 'white', fontFamily: 'AnyMale', stroke: 'black', strokeThickness: 6 }).setOrigin(0.5);
@@ -33,6 +34,13 @@ export default class PantallaFinRonda extends Phaser.Scene {
         this.input.keyboard.on('keydown-ENTER', () => {
             this.scene.start('PantallaMenu');
         });
+
+
+        try {
+            await setWinner(this.ganador.monedas, this.ganador.temporizador, this.ganador.ladoEquipo);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     crearContenedorJugador(jugador, nombreParametro, condicionParametro, x, y, condicion) {

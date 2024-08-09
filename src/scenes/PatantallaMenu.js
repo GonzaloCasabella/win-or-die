@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import BotonAmarrillo from "../objetos/BotonAmarrillo";
 import { getPhrase } from "../traducciones";
 import { sceneMenu } from "../traducciones/keys";
+import getWinner from "../firebase/getWinners";
 
 export default class PantallaMenu extends Phaser.Scene {
     constructor() {
@@ -18,7 +19,7 @@ export default class PantallaMenu extends Phaser.Scene {
         this.rectangle.alpha = 0.5;
 
         // eslint-disable-next-line no-new
-        new BotonAmarrillo(this, 140, (this.scale.height / 2), getPhrase(sceneMenu.equipo), () => {
+        new BotonAmarrillo(this, 140, (this.scale.height / 2), getPhrase(sceneMenu.jugar), () => {
             this.scene.start('Nivel1');
         }, 1, 50, 'fondo-boton');
         // eslint-disable-next-line no-new
@@ -26,8 +27,13 @@ export default class PantallaMenu extends Phaser.Scene {
             this.scene.start('PantallaControles');
         }, 1, 50, 'fondo-boton');
 
-        // this.input.keyboard.on('keydown-ENTER', () => {
-        //     this.scene.start('PantallaMenu');
-        // });
+        this.add.text(this.scale.width - 200, (this.scale.height / 2) - 300, `${getPhrase(sceneMenu.puntos)} - ${getPhrase(sceneMenu.equipo)}`, { fontSize: '40px', fontStyle: 'bold', color: 'white', fontFamily: 'AnyMale', stroke: 'black', strokeThickness: 6 }).setOrigin(0.5);
+
+        getWinner().then((winners) => {
+            winners.forEach((winner, index) => {
+                this.add.text(this.scale.width - 200, (this.scale.height / 2) - 240 + (index * 40), `${winner.points} - ${getPhrase(winner.team)
+                    }`, { fontSize: '30px', fontStyle: 'bold', color: 'white', fontFamily: 'AnyMale', stroke: 'black', strokeThickness: 6 }).setOrigin(0.5);
+            });
+        });
     }
 }

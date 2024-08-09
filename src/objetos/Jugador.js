@@ -20,6 +20,8 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
 
     numeroRondasGanadas;
 
+    temporizador;
+
     constructor(scene, x, y, texture, ladoEquipo, dataJugador = {}) {
         super(scene, x, y, texture);
         this.scene = scene;
@@ -37,6 +39,7 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
 
         this.monedas = dataJugador.monedas || 0;
         this.numeroRondasGanadas = dataJugador.numeroRondasGanadas || 0;
+        this.temporizador = dataJugador.temporizador || 0;
         this.textura = texture;
 
         this.body.setSize(15, 50);
@@ -52,6 +55,10 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         this.contadorImpactos += 1;
     }
 
+    actualizarTiempo() {
+        this.temporizador += 1;
+    }
+
     recolectarMoneda(cantidadMonedas) {
         if (this.ladoEquipo === "izquierda") {
             this.monedas += cantidadMonedas;
@@ -63,6 +70,7 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
     }
 
     mover(controles) {
+        this.actualizarTiempo();
         if (!this.puedeMoverse) {
             this.setVelocity(0);
             return;
