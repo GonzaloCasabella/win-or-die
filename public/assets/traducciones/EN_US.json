@@ -51,6 +51,25 @@
             "id":1,
             "key":"Siguiente nivel",
             "translate":"Next Round"
+        },{
+            "id": 1,
+            "key": "izquierda",
+            "translate": "Left"
+        },
+        {
+            "id": 1,
+            "key": "derecha",
+            "translate": "Right"
+        },
+        {
+            "id": 1,
+            "key": "Puntos",
+            "translate": "Points"
+        },
+        {
+            "id": 1,
+            "key": "Jugar",
+            "translate": "Game"
         }
     ]
 }

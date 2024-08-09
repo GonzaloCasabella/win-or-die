@@ -11,7 +11,11 @@ const sceneMenuPrincipal = {
 
 const sceneMenu = {
     equipo: "Equipo",
-    controles: "Controles"
+    controles: "Controles",
+    izquierda: "izquierda",
+    derecha: "derecha",
+    puntos: "Puntos",
+    jugar: "Jugar",
 }
 
 const sceneUI = {
