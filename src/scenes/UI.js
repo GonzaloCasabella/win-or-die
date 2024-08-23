@@ -54,9 +54,6 @@ export default class UI extends Phaser.Scene {
   }
 
   create() {
-
-
-
     this.time.addEvent({
       delay: 1000,
       callback: this.actualizarTiempo,
@@ -79,15 +76,18 @@ export default class UI extends Phaser.Scene {
     });
   }
 
+
   crearTemporizador() {
     const uiArriba = this.add.image(this.scale.width / 2, 0, "temporizador-ui").setOrigin(0.5, 0);
     uiArriba.setScale(0.75)
+
     this.add.text(this.scale.width / 2, 14, getPhrase(sceneUI.terminaEn), {
       fontFamily: "AlarmClock",
       fontStyle: "bold",
       fontSize: "18px",
       color: "#ffffff",
     }).setOrigin(0.5);
+
     this.temporizadorTexto = this.add.text(this.scale.width / 2, 80, `${this.contadorTiempo}`, {
       fontFamily: "AlarmClock",
       fontStyle: "bold",
@@ -104,6 +104,8 @@ export default class UI extends Phaser.Scene {
         fill: true,
       },
     }).setOrigin(0.5);
+
+    this.sound.play('timer', { loop: true, volume: 0.2 });
   }
 
   crearContadoresMonedas() {
@@ -170,6 +172,10 @@ export default class UI extends Phaser.Scene {
   actualizarTiempo() {
     this.contadorTiempo -= 1;
     this.temporizadorTexto.setText(`${this.contadorTiempo}`);
+    if (this.contadorTiempo < 10) {
+      // this.ultimosSegundos = true
+      this.sound.play("voz-contador")
+    } 
 
     if (this.contadorTiempo <= 0 && !this.gameOver) {
       this.gameOver = true;

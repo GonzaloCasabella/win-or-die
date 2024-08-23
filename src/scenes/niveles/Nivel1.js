@@ -174,6 +174,7 @@ export default class Nivel1 extends Phaser.Scene {
     update() {
         if (this.vidasEquipoIzquierda <= 0 || this.vidasEquipoDerecha <= 0) {
             // TODO: cambiar a gameover.
+            this.sound.stopByKey('auto-motor');
             this.scene.stop("ui");
             this.scene.start("PantallaGameOver");
         }
@@ -194,6 +195,7 @@ export default class Nivel1 extends Phaser.Scene {
             duration: 1000,
             ease: 'Linear',
             onComplete: () => {
+                this.sound.stopByKey('auto-motor');
                 this.scene.stop("ui");
                 this.scene.start("PantallaGameOver");
             }
@@ -255,6 +257,7 @@ export default class Nivel1 extends Phaser.Scene {
         const jugadores = [this.jugadorIzquierdo, this.jugadorDerecho];
         const jugadorPerdedor = jugadores.find(j => j !== jugador);
 
+        this.sound.stopByKey('auto-motor');
         this.scene.stop("ui");
         // this.scene.start("PantallaFinRonda", { ganador: this.ganador, perdedor: jugadorPerdedor });
         this.scene.start("Nivel2", { ganador: this.ganador, perdedor: jugadorPerdedor });
