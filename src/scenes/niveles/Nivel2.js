@@ -37,6 +37,7 @@ export default class Nivel2 extends Phaser.Scene {
     }
 
     create() {
+        this.sound.play('auto-motor', { loop: true, volume: 0.1 });
         this.map = this.make.tilemap({ key: "nivel2" });
         const tiled = this.map.addTilesetImage("atlas-lava", "atlas-lava");
         this.map.createLayer("piso", tiled);
