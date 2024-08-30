@@ -11,7 +11,7 @@ export default class PantallaCarga extends Phaser.Scene {
         getTranslations(ES_AR).then(res => res);
         // Backgrounds
         this.load.image('fondo-carga', 'assets/fondos/fondo-carga.jpeg')
-        this.load.image('fondo-menu', 'assets/fondos/fondo-menu.jpeg')
+        this.load.image('fondo-menu', 'assets/fondos/fondo-menu.png')
         this.load.image('fondo-desierto', 'assets/fondos/fondodesierto.jpeg')
         // this.load.image('fondo-selva', 'assets/fondos/fondoselva.jpeg')
         this.load.image('fondo-boton', 'assets/sprites/fondo-boton.png')
