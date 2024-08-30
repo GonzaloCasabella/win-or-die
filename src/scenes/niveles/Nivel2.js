@@ -84,10 +84,9 @@ export default class Nivel2 extends Phaser.Scene {
         const jugadores = [this.jugadorIzquierdo, this.jugadorDerecho];
         jugadores.forEach(jugador => {
             this.physics.add.collider(jugador, centro);
-            this.physics.add.collider(jugador, this.lavaGrupo, this.collisionLava, null, this);
             this.physics.add.collider(jugador, this.obstaculos, this.collisionObstaculo, null, this);
             this.physics.add.overlap(jugador, this.monedas, this.recolectarMoneda, null, this);
-            this.physics.add.overlap(jugador, this.metas, this.establecerGanador, null, this);
+            this.physics.add.overlap(jugador, this.metas, () => this.establecerGanador(jugador, 1), null, this);
         });
     }
 
@@ -114,27 +113,13 @@ export default class Nivel2 extends Phaser.Scene {
 
     update() {
         if (this.vidasEquipoIzquierda <= 0 || this.vidasEquipoDerecha <= 0) {
+            this.sound.stopAll();
             this.scene.stop("ui");
-            this.scene.start("PantallaGameOver");
+            const jugadorGanador = this.vidasEquipoIzquierda > 0 ? this.jugadorIzquierdo : this.jugadorDerecho;
+            this.establecerGanador(jugadorGanador, 1);
         }
         this.jugadorDerecho.mover(this.controlesDerechos);
         this.jugadorIzquierdo.mover(this.controlesIzquierdos);
-    }
-
-    collisionLava(jugadorParametro) {
-        const jugador = jugadorParametro;
-        jugador.puedeMoverse = false;
-        this.tweens.add({
-            targets: jugador,
-            scaleX: 0.5,
-            scaleY: 0.5,
-            duration: 1000,
-            ease: 'Linear',
-            onComplete: () => {
-                this.scene.stop("ui");
-                this.scene.start("PantallaGameOver");
-            }
-        });
     }
 
     collisionObstaculo(jugadorParametro, obstaculo) {
@@ -175,12 +160,13 @@ export default class Nivel2 extends Phaser.Scene {
         moneda.recolectar();
     }
 
-    establecerGanador(jugador) {
+    establecerGanador(jugador, numero = null) {
         if (this.ganador) return;
         this.ganador = jugador;
-        this.ganador.numeroRondasGanadas += 1;
+        this.ganador.numeroRondasGanadas += numero || 1;
 
         const jugadorPerdedor = [this.jugadorIzquierdo, this.jugadorDerecho].find(j => j !== jugador);
+        this.sound.stopAll();
         this.scene.stop("ui");
         this.scene.start("PantallaFinRonda", { ganador: this.ganador, perdedor: jugadorPerdedor });
     }
