@@ -51,6 +51,9 @@ export default class PantallaCarga extends Phaser.Scene {
         this.load.audio('sonido-boton', 'assets/sonidos/soundbutton.mp3');
         this.load.audio('auto-motor', 'assets/sonidos/motor3.mp3');
         this.load.audio('auto-acelerar', 'assets/sonidos/aceleracion.mp3');
+        this.load.audio('bola-distroy', 'assets/sonidos/bolaDISTROY.mp3');
+        this.load.audio('auto-choque', 'assets/sonidos/autocrash.wav');
+        this.load.audio('moneda-recolectada', 'assets/sonidos/moneda-recolectada.mp3');
 
         this.load.audio('timer', 'assets/sonidos/timer.mp3');
         this.load.audio('voz-contador', 'assets/sonidos/vozcontador.mp3');

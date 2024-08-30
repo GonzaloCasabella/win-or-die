@@ -46,7 +46,6 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         this.textura = texture;
 
         this.body.setSize(15, 50);
-        this.scene.sound.play('auto-motor', { loop: true, volume: 0.2 });
     }
 
     recibirImpacto() {
@@ -55,7 +54,7 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         } else if (this.ladoEquipo === "derecha") {
             this.scene.vidasEquipoDerecha -= 1;
         }
-
+        this.scene.sound.add("auto-choque").play({ volume: 0.4 });
         this.contadorImpactos += 1;
     }
 

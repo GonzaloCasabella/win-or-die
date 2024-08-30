@@ -24,6 +24,8 @@ export default class UI extends Phaser.Scene {
 
   temporizadorTexto;
 
+  ultimosSegundos = false;
+
   constructor() {
     super("ui");
   }
@@ -51,6 +53,8 @@ export default class UI extends Phaser.Scene {
 
     this.jugadorIzquierdo = data.jugadorIzquierdo;
     this.jugadorDerecho = data.jugadorDerecho;
+
+    this.ultimosSegundos = false;
   }
 
   create() {
@@ -172,18 +176,19 @@ export default class UI extends Phaser.Scene {
   actualizarTiempo() {
     this.contadorTiempo -= 1;
     this.temporizadorTexto.setText(`${this.contadorTiempo}`);
-    if (this.contadorTiempo < 10) {
-      // this.ultimosSegundos = true
-      this.sound.play("voz-contador")
+    if (this.contadorTiempo < 10 && !this.ultimosSegundos) {
+      this.sound.play("voz-contador");
+      this.ultimosSegundos = true;
     } 
 
     if (this.contadorTiempo <= 0 && !this.gameOver) {
-      this.gameOver = true;
+      this.sound.stopAll()
       this.scene.manager.getScenes(true).forEach(escena => {
         escena.scene.stop();
       });
-
+      // todo: agregar pantalla de fin de ronda
       this.scene.start("PantallaGameOver");
+      this.gameOver = true;
     }
   }
 }

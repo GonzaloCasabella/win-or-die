@@ -14,11 +14,11 @@ export default class Moneda extends Phaser.Physics.Arcade.Sprite {
 
         this.cantidad = 100;
 
+        this.sonidoRecolectado = scene.sound.add('moneda-recolectada', { volume: 0.4 });
         this.animacion();
     }
 
     animacion() {
-        // quiero hacer un tween en yoyo, que cambie la escala de 1 a 0.5 y de 0.5 a 1
         this.scene.tweens.add({
             targets: this,
             scale: 0.9,
@@ -27,5 +27,10 @@ export default class Moneda extends Phaser.Physics.Arcade.Sprite {
             yoyo: true,
             repeat: -1
         });
+    }
+
+    recolectar() {
+        this.sonidoRecolectado.play();
+        this.destroy();
     }
 }

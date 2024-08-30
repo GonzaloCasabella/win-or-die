@@ -49,6 +49,7 @@ export default class Nivel1 extends Phaser.Scene {
 
 
     create() {
+        this.sound.play('auto-motor', { loop: true, volume: 0.2 });
         this.map = this.make.tilemap({ key: "nivel1" });
         const tiled = this.map.addTilesetImage("atlas-lava", "atlas-lava");
         this.map.createLayer("piso", tiled);
@@ -173,10 +174,11 @@ export default class Nivel1 extends Phaser.Scene {
 
     update() {
         if (this.vidasEquipoIzquierda <= 0 || this.vidasEquipoDerecha <= 0) {
-            // TODO: cambiar a gameover.
-            this.sound.stopByKey('auto-motor');
+            this.sound.stopAll();
             this.scene.stop("ui");
-            this.scene.start("PantallaGameOver");
+            const jugadorGanador = this.vidasEquipoIzquierda > 0 ? this.jugadorIzquierdo : this.jugadorDerecho;
+            this.establecerGanador(jugadorGanador, 2);
+
         }
         this.jugadorDerecho.mover(this.controlesDerechos);
 
@@ -195,9 +197,13 @@ export default class Nivel1 extends Phaser.Scene {
             duration: 1000,
             ease: 'Linear',
             onComplete: () => {
-                this.sound.stopByKey('auto-motor');
+                this.sound.stopAll();
                 this.scene.stop("ui");
-                this.scene.start("PantallaGameOver");
+
+
+                const jugadores = [this.jugadorIzquierdo, this.jugadorDerecho];
+                const jugadorGanador = jugadores.find(j => j !== jugador);
+                this.establecerGanador(jugadorGanador, 2);
             }
         });
     }
@@ -244,23 +250,25 @@ export default class Nivel1 extends Phaser.Scene {
 
     // eslint-disable-next-line class-methods-use-this
     recolectarMoneda(jugador, moneda) {
-
+        moneda.recolectar();
         jugador.recolectarMoneda(moneda.cantidad);
-        moneda.destroy();
     }
 
-    establecerGanador(jugador) {
+    establecerGanador(jugador, numero = null) {
         if (this.ganador) return;
         this.ganador = jugador;
-        this.ganador.numeroRondasGanadas += 1;
+        if (numero) {
+            this.ganador.numeroRondasGanadas += numero;
+        } else {
+            this.ganador.numeroRondasGanadas += 1;
+        }
 
         const jugadores = [this.jugadorIzquierdo, this.jugadorDerecho];
         const jugadorPerdedor = jugadores.find(j => j !== jugador);
 
-        this.sound.stopByKey('auto-motor');
+        this.sound.stopAll();
         this.scene.stop("ui");
-        // this.scene.start("PantallaFinRonda", { ganador: this.ganador, perdedor: jugadorPerdedor });
-        this.scene.start("Nivel2", { ganador: this.ganador, perdedor: jugadorPerdedor });
+        this.scene.start("PantallaFinRonda", { ganador: this.ganador, perdedor: jugadorPerdedor });
     }
 
 
