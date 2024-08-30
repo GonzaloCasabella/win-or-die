@@ -133,8 +133,8 @@ export default class Nivel1 extends Phaser.Scene {
         this.physics.add.overlap(this.jugadorIzquierdo, this.monedas, this.recolectarMoneda, null, this);
         this.physics.add.overlap(this.jugadorDerecho, this.monedas, this.recolectarMoneda, null, this);
 
-        this.physics.add.overlap(this.jugadorIzquierdo, this.metas, this.establecerGanador, null, this);
-        this.physics.add.overlap(this.jugadorDerecho, this.metas, this.establecerGanador, null, this);
+        this.physics.add.overlap(this.jugadorIzquierdo, this.metas, () => this.establecerGanador(this.jugadorIzquierdo, 1), null, this);
+        this.physics.add.overlap(this.jugadorDerecho, this.metas, () => this.establecerGanador(this.jugadorDerecho, 1), null, this);
 
 
 
@@ -178,7 +178,6 @@ export default class Nivel1 extends Phaser.Scene {
             this.scene.stop("ui");
             const jugadorGanador = this.vidasEquipoIzquierda > 0 ? this.jugadorIzquierdo : this.jugadorDerecho;
             this.establecerGanador(jugadorGanador, 2);
-
         }
         this.jugadorDerecho.mover(this.controlesDerechos);
 
