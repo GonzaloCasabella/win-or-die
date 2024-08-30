@@ -186,8 +186,24 @@ export default class UI extends Phaser.Scene {
       this.scene.manager.getScenes(true).forEach(escena => {
         escena.scene.stop();
       });
-      // todo: agregar pantalla de fin de ronda
-      this.scene.start("PantallaGameOver");
+
+      let ganador = {};
+      let perdedor = {};
+      if (this.jugadorIzquierdo.monedas > this.jugadorDerecho.monedas) {
+        this.jugadorIzquierdo.numeroRondasGanadas += 1;
+        ganador = this.jugadorIzquierdo;
+        perdedor = this.jugadorDerecho;
+      } else {
+        this.jugadorDerecho.numeroRondasGanadas += 1;
+        ganador = this.jugadorDerecho;
+        perdedor = this.jugadorIzquierdo;
+      }
+
+      this.scene.start("PantallaFinRonda", {
+        ganador,
+        perdedor
+      }
+      );
       this.gameOver = true;
     }
   }

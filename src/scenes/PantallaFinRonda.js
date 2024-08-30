@@ -28,13 +28,8 @@ export default class PantallaFinRonda extends Phaser.Scene {
 
         // eslint-disable-next-line no-new
         new Boton(this, this.scale.width / 2, (this.scale.height / 2) + 200, getPhrase(sceneFinRonda.siguienteNivel), () => {
-            this.scene.start('PantallaMenu');
+            this.scene.start('Nivel2', { ganador: this.ganador, perdedor: this.perdedor });
         }, 1, 50, 'fondo-boton');
-
-        this.input.keyboard.on('keydown-ENTER', () => {
-            this.scene.start('PantallaMenu');
-        });
-
 
         try {
             await setWinner(this.ganador.monedas, this.ganador.temporizador, this.ganador.ladoEquipo);

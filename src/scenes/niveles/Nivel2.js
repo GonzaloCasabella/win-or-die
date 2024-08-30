@@ -39,7 +39,6 @@ export default class Nivel2 extends Phaser.Scene {
     }
 
     init(data) {
-
         this.tiempo = 30;
         this.vidasEquipoIzquierda = 3;
         this.vidasEquipoDerecha = 3;
