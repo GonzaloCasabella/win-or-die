@@ -1,8 +1,8 @@
 ![phaser3-parceljs-template](/public/assets/sprites/menu-win-or-die.png)
 
-# Phaser 3 + Parcel Template
+# WIN OR DIE
 
-> For people who want to spend time making games instead of configuring build tools.
+> Videojuego multiplayer de competencia, top down.
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 
