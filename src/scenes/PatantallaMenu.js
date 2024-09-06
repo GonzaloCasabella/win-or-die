@@ -33,12 +33,12 @@ export default class PantallaMenu extends Phaser.Scene {
             this.scene.start('PantallaControles');
         }, 1, 50, 'fondo-boton');
 
-        this.add.text(this.scale.width - 200, (this.scale.height / 2) - 300, `${getPhrase(sceneMenu.puntos)} - ${getPhrase(sceneMenu.equipo)}`, { fontSize: '40px', fontStyle: 'bold', color: 'white', fontFamily: 'AnyMale', stroke: 'black', strokeThickness: 6 }).setOrigin(0.5);
+        this.add.text(this.scale.width - 150, (this.scale.height / 2) - 150, `${getPhrase(sceneMenu.puntos)} - ${getPhrase(sceneMenu.equipo)}`, { fontSize: '40px', fontStyle: 'bold', color: 'white', fontFamily: 'AnyMale', stroke: 'black', strokeThickness: 6 }).setOrigin(0.5);
 
         getWinner().then((winners) => {
             winners.forEach((winner, index) => {
-                this.add.text(this.scale.width - 200, (this.scale.height / 2) - 240 + (index * 40), `${winner.points} - ${getPhrase(winner.team)
-                    }`, { fontSize: '30px', fontStyle: 'bold', color: 'white', fontFamily: 'AnyMale', stroke: 'black', strokeThickness: 6 }).setOrigin(0.5);
+                this.add.text(this.scale.width - 150, (this.scale.height / 2) - 100 + (index * 40), `${winner.points} - ${getPhrase(winner.team)
+                    } ⚡`, { fontSize: '30px', fontStyle: 'bold', color: 'white', fontFamily: 'AnyMale', stroke: 'black', strokeThickness: 6 }).setOrigin(0.5);
             });
         });
     }

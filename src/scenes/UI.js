@@ -109,7 +109,7 @@ export default class UI extends Phaser.Scene {
       },
     }).setOrigin(0.5);
 
-    this.sound.play('timer', { loop: true, volume: 0.2 });
+    this.sound.play('timer', { loop: true, volume: 0.1 });
   }
 
   crearContadoresMonedas() {
