@@ -9,6 +9,11 @@ export default class PantallaMenu extends Phaser.Scene {
         super("PantallaMenu");
     }
 
+    init() {
+        if (!this.sound.get('musica-menu').isPlaying) {
+            this.sound.play('musica-menu', { loop: true, volume: 0.1 });
+        }
+    }
 
     create() {
         this.add.image(0, 0, 'fondo-menu').setOrigin(0);
@@ -20,6 +25,7 @@ export default class PantallaMenu extends Phaser.Scene {
 
         // eslint-disable-next-line no-new
         new BotonAmarrillo(this, 140, (this.scale.height / 2), getPhrase(sceneMenu.jugar), () => {
+            this.sound.stopByKey('musica-menu');
             this.scene.start('Nivel1');
         }, 1, 50, 'fondo-boton');
         // eslint-disable-next-line no-new

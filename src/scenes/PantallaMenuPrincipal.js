@@ -12,6 +12,7 @@ export default class PantallaMenuPrincipal extends Phaser.Scene {
 
 
     create() {
+        this.sound.play('musica-menu', { loop: true, volume: 0.1 });
         this.add.image(0, 0, 'fondo-menu').setOrigin(0);
         this.add.text((this.scale.width / 2), (this.scale.height / 2) - 160, "Win or Die", { fontSize: '200px', fontStyle: 'bold', color: 'white', fontFamily: 'AnyMale', stroke: 'black', strokeThickness: 6 }).setOrigin(0.5);
         // eslint-disable-next-line no-new

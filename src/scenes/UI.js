@@ -24,6 +24,8 @@ export default class UI extends Phaser.Scene {
 
   temporizadorTexto;
 
+  ultimosSegundos = false;
+
   constructor() {
     super("ui");
   }
@@ -51,12 +53,11 @@ export default class UI extends Phaser.Scene {
 
     this.jugadorIzquierdo = data.jugadorIzquierdo;
     this.jugadorDerecho = data.jugadorDerecho;
+
+    this.ultimosSegundos = false;
   }
 
   create() {
-
-
-
     this.time.addEvent({
       delay: 1000,
       callback: this.actualizarTiempo,
@@ -79,15 +80,18 @@ export default class UI extends Phaser.Scene {
     });
   }
 
+
   crearTemporizador() {
     const uiArriba = this.add.image(this.scale.width / 2, 0, "temporizador-ui").setOrigin(0.5, 0);
     uiArriba.setScale(0.75)
+
     this.add.text(this.scale.width / 2, 14, getPhrase(sceneUI.terminaEn), {
       fontFamily: "AlarmClock",
       fontStyle: "bold",
       fontSize: "18px",
       color: "#ffffff",
     }).setOrigin(0.5);
+
     this.temporizadorTexto = this.add.text(this.scale.width / 2, 80, `${this.contadorTiempo}`, {
       fontFamily: "AlarmClock",
       fontStyle: "bold",
@@ -104,6 +108,8 @@ export default class UI extends Phaser.Scene {
         fill: true,
       },
     }).setOrigin(0.5);
+
+    this.sound.play('timer', { loop: true, volume: 0.2 });
   }
 
   crearContadoresMonedas() {
@@ -170,14 +176,35 @@ export default class UI extends Phaser.Scene {
   actualizarTiempo() {
     this.contadorTiempo -= 1;
     this.temporizadorTexto.setText(`${this.contadorTiempo}`);
+    if (this.contadorTiempo < 10 && !this.ultimosSegundos) {
+      this.sound.play("voz-contador");
+      this.ultimosSegundos = true;
+    } 
 
     if (this.contadorTiempo <= 0 && !this.gameOver) {
-      this.gameOver = true;
+      this.sound.stopAll()
       this.scene.manager.getScenes(true).forEach(escena => {
         escena.scene.stop();
       });
 
-      this.scene.start("PantallaGameOver");
+      let ganador = {};
+      let perdedor = {};
+      if (this.jugadorIzquierdo.monedas > this.jugadorDerecho.monedas) {
+        this.jugadorIzquierdo.numeroRondasGanadas += 1;
+        ganador = this.jugadorIzquierdo;
+        perdedor = this.jugadorDerecho;
+      } else {
+        this.jugadorDerecho.numeroRondasGanadas += 1;
+        ganador = this.jugadorDerecho;
+        perdedor = this.jugadorIzquierdo;
+      }
+
+      this.scene.start("PantallaFinRonda", {
+        ganador,
+        perdedor
+      }
+      );
+      this.gameOver = true;
     }
   }
 }

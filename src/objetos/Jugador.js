@@ -22,6 +22,8 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
 
     temporizador;
 
+    acelerando;
+
     constructor(scene, x, y, texture, ladoEquipo, dataJugador = {}) {
         super(scene, x, y, texture);
         this.scene = scene;
@@ -36,6 +38,7 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
 
         this.velocidadInicialY = -150;
         this.velocidadTurboY = -350;
+        this.acelerando = false;
 
         this.monedas = dataJugador.monedas || 0;
         this.numeroRondasGanadas = dataJugador.numeroRondasGanadas || 0;
@@ -51,7 +54,7 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         } else if (this.ladoEquipo === "derecha") {
             this.scene.vidasEquipoDerecha -= 1;
         }
-
+        this.scene.sound.add("auto-choque").play({ volume: 0.4 });
         this.contadorImpactos += 1;
     }
 
@@ -87,6 +90,11 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         }
 
         if (controles.up.isDown) {
+            if (!this.acelerando) {
+                this.scene.sound.play('auto-acelerar');
+                this.acelerando = true;
+            }
+
             this.setVelocityY(this.velocidadTurboY);
             if (controles.left.isDown) {
                 this.setAngle(-10); // Gira el sprite 45 grados hacia la izquierda
@@ -98,6 +106,7 @@ export default class Jugador extends Phaser.Physics.Arcade.Sprite {
         } else {
             this.setVelocityY(this.velocidadInicialY);
             // this.setVelocityY(0);
+            this.acelerando = false;
         }
     }
 
